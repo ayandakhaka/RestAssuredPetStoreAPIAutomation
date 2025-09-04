@@ -1,4 +1,4 @@
-package api.payload;
+package api.payload.model;
 
 public class User {
 

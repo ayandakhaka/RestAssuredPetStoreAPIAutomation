@@ -4,14 +4,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.testng.Assert;
-import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeGroups;
 import org.testng.annotations.Test;
 
 import com.github.javafaker.Faker;
 
 import api.endpoints.UserEndPoints;
-import api.payload.User;
+import api.payload.model.User;
 import io.restassured.response.Response;
 
 public class UserTest {

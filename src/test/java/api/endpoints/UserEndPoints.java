@@ -1,14 +1,13 @@
 package api.endpoints;
 
-import com.aventstack.extentreports.gherkin.model.Given;
-
-import api.payload.User;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 
-import static io.restassured.RestAssured.*;   // for given(), when(), then()
+import static io.restassured.RestAssured.*;
 
 import java.util.List;
+
+import api.payload.model.User;
 
 public class UserEndPoints {
 
