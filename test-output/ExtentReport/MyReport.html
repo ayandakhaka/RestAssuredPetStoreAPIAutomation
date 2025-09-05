@@ -41,7 +41,7 @@ style='height:50px;margin-right:10px;'/>
 </span></a>
 </li>
 <li class="m-r-10">
-<a href="#"><span class="badge badge-primary">Sept 5, 2025 04:07:55 pm</span></a>
+<a href="#"><span class="badge badge-primary">Sept 5, 2025 05:31:22 pm</span></a>
 </li>
 </ul>
 </div>
@@ -51,6 +51,16 @@ style='height:50px;margin-right:10px;'/>
 <li class="nav-item dropdown" onclick="toggleView('test-view')">
 <a id="nav-test" class="dropdown-toggle" href="#">
 <span class="ico"><i class="fa fa-list"></i></span>
+</a>
+</li>
+<li class="nav-item dropdown" onclick="toggleView('exception-view')">
+<a id="nav-exception" class="dropdown-toggle" href="#">
+<span class="ico"><i class="fa fa-bug"></i></span>
+</a>
+</li>
+<li class="nav-item dropdown" onclick="toggleView('category-view')">
+<a id="nav-category" class="dropdown-toggle" href="#">
+<span class="ico"><i class="fa fa-tag"></i></span>
 </a>
 </li>
 <li class="nav-item dropdown" onclick="toggleView('dashboard-view')">
@@ -73,8 +83,16 @@ style='height:50px;margin-right:10px;'/>
 <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-exclamation-circle"></i></a>
 <ul id="status-toggle" class="dropdown-menu dropdown-md p-v-0">
 <a class="dropdown-item" status="pass" href="#"><span>Pass</span><span class="status success"></span></a>
+<a class="dropdown-item" status="fail" href="#"><span>Fail</span><span class="status danger"></span></a>
+<a class="dropdown-item" status="skip" href="#"><span>Skip</span><span class="status warning"></span></a>
 <div class="dropdown-divider"></div>
 <a status="clear" class="dropdown-item" href="#"><span>Clear</span><span class="pull-right"><i class="fa fa-close"></i></span></a>
+</ul>
+</li>
+<li class="dropdown">
+<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-tag"></i></a>
+<ul id="tag-toggle" class="dropdown-menu dropdown-md p-v-0">
+<a class="dropdown-item" href="#">ListPetsByStatus</a><a class="dropdown-item" href="#">ListPetById</a><a class="dropdown-item" href="#">UploadPetImage</a><a class="dropdown-item" href="#">UpdatePet</a><a class="dropdown-item" href="#">AddPet</a><a class="dropdown-item" href="#">UpdatePetFormData</a>
 </ul>
 </li>
 </ul>
@@ -82,12 +100,12 @@ style='height:50px;margin-right:10px;'/>
       <ul class="test-list-item">
         <li class="test-item"  status="pass" test-id="1"
           author=""
-          tag=""
+          tag="AddPet"
           device="">
           <div class="test-detail">
-            <p class="name">testAddNewPet_return_200_success_statusCode</p>
+            <p class="name">testPetName</p>
             <p class="text-sm">
-              <span>4:08:10 pm</span> / <span>00:00:00:032</span>
+              <span>5:31:41 pm</span> / <span>00:00:00:268</span>
               <span class="badge pass-bg log float-right">Pass</span>
             </p>
           </div>
@@ -95,24 +113,32 @@ style='height:50px;margin-right:10px;'/>
 <div class="detail-head">
 <div class="p-v-10">
 <div class="info">
-<h5 class="test-status text-pass">testAddNewPet_return_200_success_statusCode</h5>
-<span class='badge badge-success'>09.05.2025 4:08:10 pm</span>
-<span class='badge badge-danger'>09.05.2025 4:08:10 pm</span>
-<span class='badge badge-default'>00:00:00:032</span>
+<h5 class="test-status text-pass">testPetName</h5>
+<span class='badge badge-success'>09.05.2025 5:31:41 pm</span>
+<span class='badge badge-danger'>09.05.2025 5:31:42 pm</span>
+<span class='badge badge-default'>00:00:00:268</span>
 &middot; <span class='uri-anchor badge badge-default'>#test-id=1</span>
 <span class='badge badge-default pointer float-right ml-1 et'><i class="fa fa-chevron-down"></i></span>
 <span class='badge badge-default pointer float-right ct'><i class="fa fa-chevron-up"></i></span>
 </div>
+<div class="m-t-15"><span class="badge badge-pill badge-default">AddPet</span></div>
 </div>
 </div><div class="detail-body mt-4">
 <table class="table table-sm">
   <thead><tr><th class="status-col">Status</th><th class="timestamp-col">Timestamp</th><th class="details-col">Details</th></tr></thead>
   <tbody>
       <tr class="event-row">
-        <td><span class="badge log pass-bg">Pass</span></td>
-        <td>4:08:10 pm</td>
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>5:31:41 pm</td>
         <td>
-          Test case PASSED: testAddNewPet_return_200_success_statusCode
+          Test Started: testPetName
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log pass-bg">Pass</span></td>
+        <td>5:31:42 pm</td>
+        <td>
+          <span class='badge white-text green'>Test Passed: testPetName</span>
         </td>
       </tr>
   </tbody>
@@ -122,12 +148,12 @@ style='height:50px;margin-right:10px;'/>
         </li>
         <li class="test-item"  status="pass" test-id="2"
           author=""
-          tag=""
+          tag="AddPet"
           device="">
           <div class="test-detail">
-            <p class="name">testAddNewPet_petId</p>
+            <p class="name">testPetCategory</p>
             <p class="text-sm">
-              <span>4:08:10 pm</span> / <span>00:00:03:124</span>
+              <span>5:31:42 pm</span> / <span>00:00:00:145</span>
               <span class="badge pass-bg log float-right">Pass</span>
             </p>
           </div>
@@ -135,24 +161,32 @@ style='height:50px;margin-right:10px;'/>
 <div class="detail-head">
 <div class="p-v-10">
 <div class="info">
-<h5 class="test-status text-pass">testAddNewPet_petId</h5>
-<span class='badge badge-success'>09.05.2025 4:08:10 pm</span>
-<span class='badge badge-danger'>09.05.2025 4:08:13 pm</span>
-<span class='badge badge-default'>00:00:03:124</span>
+<h5 class="test-status text-pass">testPetCategory</h5>
+<span class='badge badge-success'>09.05.2025 5:31:42 pm</span>
+<span class='badge badge-danger'>09.05.2025 5:31:42 pm</span>
+<span class='badge badge-default'>00:00:00:145</span>
 &middot; <span class='uri-anchor badge badge-default'>#test-id=2</span>
 <span class='badge badge-default pointer float-right ml-1 et'><i class="fa fa-chevron-down"></i></span>
 <span class='badge badge-default pointer float-right ct'><i class="fa fa-chevron-up"></i></span>
 </div>
+<div class="m-t-15"><span class="badge badge-pill badge-default">AddPet</span></div>
 </div>
 </div><div class="detail-body mt-4">
 <table class="table table-sm">
   <thead><tr><th class="status-col">Status</th><th class="timestamp-col">Timestamp</th><th class="details-col">Details</th></tr></thead>
   <tbody>
       <tr class="event-row">
-        <td><span class="badge log pass-bg">Pass</span></td>
-        <td>4:08:13 pm</td>
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>5:31:42 pm</td>
         <td>
-          Test case PASSED: testAddNewPet_petId
+          Test Started: testPetCategory
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log pass-bg">Pass</span></td>
+        <td>5:31:42 pm</td>
+        <td>
+          <span class='badge white-text green'>Test Passed: testPetCategory</span>
         </td>
       </tr>
   </tbody>
@@ -162,12 +196,12 @@ style='height:50px;margin-right:10px;'/>
         </li>
         <li class="test-item"  status="pass" test-id="3"
           author=""
-          tag=""
+          tag="AddPet"
           device="">
           <div class="test-detail">
-            <p class="name">testAddNewPet_category_id</p>
+            <p class="name">testPetTags</p>
             <p class="text-sm">
-              <span>4:08:13 pm</span> / <span>00:00:00:365</span>
+              <span>5:31:42 pm</span> / <span>00:00:00:680</span>
               <span class="badge pass-bg log float-right">Pass</span>
             </p>
           </div>
@@ -175,24 +209,32 @@ style='height:50px;margin-right:10px;'/>
 <div class="detail-head">
 <div class="p-v-10">
 <div class="info">
-<h5 class="test-status text-pass">testAddNewPet_category_id</h5>
-<span class='badge badge-success'>09.05.2025 4:08:13 pm</span>
-<span class='badge badge-danger'>09.05.2025 4:08:14 pm</span>
-<span class='badge badge-default'>00:00:00:365</span>
+<h5 class="test-status text-pass">testPetTags</h5>
+<span class='badge badge-success'>09.05.2025 5:31:42 pm</span>
+<span class='badge badge-danger'>09.05.2025 5:31:43 pm</span>
+<span class='badge badge-default'>00:00:00:680</span>
 &middot; <span class='uri-anchor badge badge-default'>#test-id=3</span>
 <span class='badge badge-default pointer float-right ml-1 et'><i class="fa fa-chevron-down"></i></span>
 <span class='badge badge-default pointer float-right ct'><i class="fa fa-chevron-up"></i></span>
 </div>
+<div class="m-t-15"><span class="badge badge-pill badge-default">AddPet</span></div>
 </div>
 </div><div class="detail-body mt-4">
 <table class="table table-sm">
   <thead><tr><th class="status-col">Status</th><th class="timestamp-col">Timestamp</th><th class="details-col">Details</th></tr></thead>
   <tbody>
       <tr class="event-row">
-        <td><span class="badge log pass-bg">Pass</span></td>
-        <td>4:08:14 pm</td>
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>5:31:42 pm</td>
         <td>
-          Test case PASSED: testAddNewPet_category_id
+          Test Started: testPetTags
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log pass-bg">Pass</span></td>
+        <td>5:31:43 pm</td>
+        <td>
+          <span class='badge white-text green'>Test Passed: testPetTags</span>
         </td>
       </tr>
   </tbody>
@@ -202,12 +244,12 @@ style='height:50px;margin-right:10px;'/>
         </li>
         <li class="test-item"  status="pass" test-id="4"
           author=""
-          tag=""
+          tag="AddPet"
           device="">
           <div class="test-detail">
-            <p class="name">testAddNewPet_category_name</p>
+            <p class="name">testPetStatus</p>
             <p class="text-sm">
-              <span>4:08:14 pm</span> / <span>00:00:00:403</span>
+              <span>5:31:43 pm</span> / <span>00:00:00:057</span>
               <span class="badge pass-bg log float-right">Pass</span>
             </p>
           </div>
@@ -215,24 +257,32 @@ style='height:50px;margin-right:10px;'/>
 <div class="detail-head">
 <div class="p-v-10">
 <div class="info">
-<h5 class="test-status text-pass">testAddNewPet_category_name</h5>
-<span class='badge badge-success'>09.05.2025 4:08:14 pm</span>
-<span class='badge badge-danger'>09.05.2025 4:08:14 pm</span>
-<span class='badge badge-default'>00:00:00:403</span>
+<h5 class="test-status text-pass">testPetStatus</h5>
+<span class='badge badge-success'>09.05.2025 5:31:43 pm</span>
+<span class='badge badge-danger'>09.05.2025 5:31:43 pm</span>
+<span class='badge badge-default'>00:00:00:057</span>
 &middot; <span class='uri-anchor badge badge-default'>#test-id=4</span>
 <span class='badge badge-default pointer float-right ml-1 et'><i class="fa fa-chevron-down"></i></span>
 <span class='badge badge-default pointer float-right ct'><i class="fa fa-chevron-up"></i></span>
 </div>
+<div class="m-t-15"><span class="badge badge-pill badge-default">AddPet</span></div>
 </div>
 </div><div class="detail-body mt-4">
 <table class="table table-sm">
   <thead><tr><th class="status-col">Status</th><th class="timestamp-col">Timestamp</th><th class="details-col">Details</th></tr></thead>
   <tbody>
       <tr class="event-row">
-        <td><span class="badge log pass-bg">Pass</span></td>
-        <td>4:08:14 pm</td>
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>5:31:43 pm</td>
         <td>
-          Test case PASSED: testAddNewPet_category_name
+          Test Started: testPetStatus
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log pass-bg">Pass</span></td>
+        <td>5:31:43 pm</td>
+        <td>
+          <span class='badge white-text green'>Test Passed: testPetStatus</span>
         </td>
       </tr>
   </tbody>
@@ -242,12 +292,12 @@ style='height:50px;margin-right:10px;'/>
         </li>
         <li class="test-item"  status="pass" test-id="5"
           author=""
-          tag=""
+          tag="UploadPetImage"
           device="">
           <div class="test-detail">
-            <p class="name">testAddNewPet_pet_name</p>
+            <p class="name">testUploadPetImage</p>
             <p class="text-sm">
-              <span>4:08:14 pm</span> / <span>00:00:00:184</span>
+              <span>5:31:43 pm</span> / <span>00:00:04:170</span>
               <span class="badge pass-bg log float-right">Pass</span>
             </p>
           </div>
@@ -255,24 +305,32 @@ style='height:50px;margin-right:10px;'/>
 <div class="detail-head">
 <div class="p-v-10">
 <div class="info">
-<h5 class="test-status text-pass">testAddNewPet_pet_name</h5>
-<span class='badge badge-success'>09.05.2025 4:08:14 pm</span>
-<span class='badge badge-danger'>09.05.2025 4:08:14 pm</span>
-<span class='badge badge-default'>00:00:00:184</span>
+<h5 class="test-status text-pass">testUploadPetImage</h5>
+<span class='badge badge-success'>09.05.2025 5:31:43 pm</span>
+<span class='badge badge-danger'>09.05.2025 5:31:47 pm</span>
+<span class='badge badge-default'>00:00:04:170</span>
 &middot; <span class='uri-anchor badge badge-default'>#test-id=5</span>
 <span class='badge badge-default pointer float-right ml-1 et'><i class="fa fa-chevron-down"></i></span>
 <span class='badge badge-default pointer float-right ct'><i class="fa fa-chevron-up"></i></span>
 </div>
+<div class="m-t-15"><span class="badge badge-pill badge-default">UploadPetImage</span></div>
 </div>
 </div><div class="detail-body mt-4">
 <table class="table table-sm">
   <thead><tr><th class="status-col">Status</th><th class="timestamp-col">Timestamp</th><th class="details-col">Details</th></tr></thead>
   <tbody>
       <tr class="event-row">
-        <td><span class="badge log pass-bg">Pass</span></td>
-        <td>4:08:14 pm</td>
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>5:31:43 pm</td>
         <td>
-          Test case PASSED: testAddNewPet_pet_name
+          Test Started: testUploadPetImage
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log pass-bg">Pass</span></td>
+        <td>5:31:47 pm</td>
+        <td>
+          <span class='badge white-text green'>Test Passed: testUploadPetImage</span>
         </td>
       </tr>
   </tbody>
@@ -282,12 +340,12 @@ style='height:50px;margin-right:10px;'/>
         </li>
         <li class="test-item"  status="pass" test-id="6"
           author=""
-          tag=""
+          tag="UpdatePet"
           device="">
           <div class="test-detail">
-            <p class="name">testAddNewPet_pet_photoUrls_firstElement</p>
+            <p class="name">testUpdatePetNameAndTags</p>
             <p class="text-sm">
-              <span>4:08:15 pm</span> / <span>00:00:00:381</span>
+              <span>5:31:47 pm</span> / <span>00:00:01:652</span>
               <span class="badge pass-bg log float-right">Pass</span>
             </p>
           </div>
@@ -295,24 +353,32 @@ style='height:50px;margin-right:10px;'/>
 <div class="detail-head">
 <div class="p-v-10">
 <div class="info">
-<h5 class="test-status text-pass">testAddNewPet_pet_photoUrls_firstElement</h5>
-<span class='badge badge-success'>09.05.2025 4:08:15 pm</span>
-<span class='badge badge-danger'>09.05.2025 4:08:15 pm</span>
-<span class='badge badge-default'>00:00:00:381</span>
+<h5 class="test-status text-pass">testUpdatePetNameAndTags</h5>
+<span class='badge badge-success'>09.05.2025 5:31:47 pm</span>
+<span class='badge badge-danger'>09.05.2025 5:31:49 pm</span>
+<span class='badge badge-default'>00:00:01:652</span>
 &middot; <span class='uri-anchor badge badge-default'>#test-id=6</span>
 <span class='badge badge-default pointer float-right ml-1 et'><i class="fa fa-chevron-down"></i></span>
 <span class='badge badge-default pointer float-right ct'><i class="fa fa-chevron-up"></i></span>
 </div>
+<div class="m-t-15"><span class="badge badge-pill badge-default">UpdatePet</span></div>
 </div>
 </div><div class="detail-body mt-4">
 <table class="table table-sm">
   <thead><tr><th class="status-col">Status</th><th class="timestamp-col">Timestamp</th><th class="details-col">Details</th></tr></thead>
   <tbody>
       <tr class="event-row">
-        <td><span class="badge log pass-bg">Pass</span></td>
-        <td>4:08:15 pm</td>
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>5:31:47 pm</td>
         <td>
-          Test case PASSED: testAddNewPet_pet_photoUrls_firstElement
+          Test Started: testUpdatePetNameAndTags
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log pass-bg">Pass</span></td>
+        <td>5:31:49 pm</td>
+        <td>
+          <span class='badge white-text green'>Test Passed: testUpdatePetNameAndTags</span>
         </td>
       </tr>
   </tbody>
@@ -322,12 +388,12 @@ style='height:50px;margin-right:10px;'/>
         </li>
         <li class="test-item"  status="pass" test-id="7"
           author=""
-          tag=""
+          tag="ListPetsByStatus"
           device="">
           <div class="test-detail">
-            <p class="name">testAddNewPet_pet_photoUrls_SecondElement</p>
+            <p class="name">testListPetsByStatus</p>
             <p class="text-sm">
-              <span>4:08:15 pm</span> / <span>00:00:00:128</span>
+              <span>5:31:49 pm</span> / <span>00:00:01:174</span>
               <span class="badge pass-bg log float-right">Pass</span>
             </p>
           </div>
@@ -335,24 +401,32 @@ style='height:50px;margin-right:10px;'/>
 <div class="detail-head">
 <div class="p-v-10">
 <div class="info">
-<h5 class="test-status text-pass">testAddNewPet_pet_photoUrls_SecondElement</h5>
-<span class='badge badge-success'>09.05.2025 4:08:15 pm</span>
-<span class='badge badge-danger'>09.05.2025 4:08:15 pm</span>
-<span class='badge badge-default'>00:00:00:128</span>
+<h5 class="test-status text-pass">testListPetsByStatus</h5>
+<span class='badge badge-success'>09.05.2025 5:31:49 pm</span>
+<span class='badge badge-danger'>09.05.2025 5:31:50 pm</span>
+<span class='badge badge-default'>00:00:01:174</span>
 &middot; <span class='uri-anchor badge badge-default'>#test-id=7</span>
 <span class='badge badge-default pointer float-right ml-1 et'><i class="fa fa-chevron-down"></i></span>
 <span class='badge badge-default pointer float-right ct'><i class="fa fa-chevron-up"></i></span>
 </div>
+<div class="m-t-15"><span class="badge badge-pill badge-default">ListPetsByStatus</span></div>
 </div>
 </div><div class="detail-body mt-4">
 <table class="table table-sm">
   <thead><tr><th class="status-col">Status</th><th class="timestamp-col">Timestamp</th><th class="details-col">Details</th></tr></thead>
   <tbody>
       <tr class="event-row">
-        <td><span class="badge log pass-bg">Pass</span></td>
-        <td>4:08:15 pm</td>
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>5:31:49 pm</td>
         <td>
-          Test case PASSED: testAddNewPet_pet_photoUrls_SecondElement
+          Test Started: testListPetsByStatus
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log pass-bg">Pass</span></td>
+        <td>5:31:50 pm</td>
+        <td>
+          <span class='badge white-text green'>Test Passed: testListPetsByStatus</span>
         </td>
       </tr>
   </tbody>
@@ -362,12 +436,12 @@ style='height:50px;margin-right:10px;'/>
         </li>
         <li class="test-item"  status="pass" test-id="8"
           author=""
-          tag=""
+          tag="ListPetById"
           device="">
           <div class="test-detail">
-            <p class="name">testAddNewPet_tags_first_id</p>
+            <p class="name">testListPetById</p>
             <p class="text-sm">
-              <span>4:08:15 pm</span> / <span>00:00:00:112</span>
+              <span>5:31:50 pm</span> / <span>00:00:01:284</span>
               <span class="badge pass-bg log float-right">Pass</span>
             </p>
           </div>
@@ -375,24 +449,32 @@ style='height:50px;margin-right:10px;'/>
 <div class="detail-head">
 <div class="p-v-10">
 <div class="info">
-<h5 class="test-status text-pass">testAddNewPet_tags_first_id</h5>
-<span class='badge badge-success'>09.05.2025 4:08:15 pm</span>
-<span class='badge badge-danger'>09.05.2025 4:08:15 pm</span>
-<span class='badge badge-default'>00:00:00:112</span>
+<h5 class="test-status text-pass">testListPetById</h5>
+<span class='badge badge-success'>09.05.2025 5:31:50 pm</span>
+<span class='badge badge-danger'>09.05.2025 5:31:52 pm</span>
+<span class='badge badge-default'>00:00:01:284</span>
 &middot; <span class='uri-anchor badge badge-default'>#test-id=8</span>
 <span class='badge badge-default pointer float-right ml-1 et'><i class="fa fa-chevron-down"></i></span>
 <span class='badge badge-default pointer float-right ct'><i class="fa fa-chevron-up"></i></span>
 </div>
+<div class="m-t-15"><span class="badge badge-pill badge-default">ListPetById</span></div>
 </div>
 </div><div class="detail-body mt-4">
 <table class="table table-sm">
   <thead><tr><th class="status-col">Status</th><th class="timestamp-col">Timestamp</th><th class="details-col">Details</th></tr></thead>
   <tbody>
       <tr class="event-row">
-        <td><span class="badge log pass-bg">Pass</span></td>
-        <td>4:08:15 pm</td>
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>5:31:50 pm</td>
         <td>
-          Test case PASSED: testAddNewPet_tags_first_id
+          Test Started: testListPetById
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log pass-bg">Pass</span></td>
+        <td>5:31:52 pm</td>
+        <td>
+          <span class='badge white-text green'>Test Passed: testListPetById</span>
         </td>
       </tr>
   </tbody>
@@ -400,39 +482,47 @@ style='height:50px;margin-right:10px;'/>
 </div>
           </div>
         </li>
-        <li class="test-item"  status="pass" test-id="9"
+        <li class="test-item"  status="skip" test-id="9"
           author=""
-          tag=""
+          tag="UpdatePetFormData"
           device="">
           <div class="test-detail">
-            <p class="name">testAddNewPet_tags_first_name</p>
+            <p class="name">testUpdatePetWithFormData</p>
             <p class="text-sm">
-              <span>4:08:15 pm</span> / <span>00:00:00:401</span>
-              <span class="badge pass-bg log float-right">Pass</span>
+              <span>5:31:52 pm</span> / <span>00:00:01:473</span>
+              <span class="badge skip-bg log float-right">Skip</span>
             </p>
           </div>
           <div class="test-contents d-none">
 <div class="detail-head">
 <div class="p-v-10">
 <div class="info">
-<h5 class="test-status text-pass">testAddNewPet_tags_first_name</h5>
-<span class='badge badge-success'>09.05.2025 4:08:15 pm</span>
-<span class='badge badge-danger'>09.05.2025 4:08:16 pm</span>
-<span class='badge badge-default'>00:00:00:401</span>
+<h5 class="test-status text-skip">testUpdatePetWithFormData</h5>
+<span class='badge badge-success'>09.05.2025 5:31:52 pm</span>
+<span class='badge badge-danger'>09.05.2025 5:31:53 pm</span>
+<span class='badge badge-default'>00:00:01:473</span>
 &middot; <span class='uri-anchor badge badge-default'>#test-id=9</span>
 <span class='badge badge-default pointer float-right ml-1 et'><i class="fa fa-chevron-down"></i></span>
 <span class='badge badge-default pointer float-right ct'><i class="fa fa-chevron-up"></i></span>
 </div>
+<div class="m-t-15"><span class="badge badge-pill badge-default">UpdatePetFormData</span></div>
 </div>
 </div><div class="detail-body mt-4">
 <table class="table table-sm">
   <thead><tr><th class="status-col">Status</th><th class="timestamp-col">Timestamp</th><th class="details-col">Details</th></tr></thead>
   <tbody>
       <tr class="event-row">
-        <td><span class="badge log pass-bg">Pass</span></td>
-        <td>4:08:16 pm</td>
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>5:31:52 pm</td>
         <td>
-          Test case PASSED: testAddNewPet_tags_first_name
+          Test Started: testUpdatePetWithFormData
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log skip-bg">Skip</span></td>
+        <td>5:31:53 pm</td>
+        <td>
+          <span class='badge white-text orange'>Test Skipped: testUpdatePetWithFormData</span>
         </td>
       </tr>
   </tbody>
@@ -440,39 +530,47 @@ style='height:50px;margin-right:10px;'/>
 </div>
           </div>
         </li>
-        <li class="test-item"  status="pass" test-id="10"
+        <li class="test-item"  status="skip" test-id="10"
           author=""
-          tag=""
+          tag="UpdatePetFormData"
           device="">
           <div class="test-detail">
-            <p class="name">testAddNewPet_tags_second_id</p>
+            <p class="name">testUpdatePetWithFormData</p>
             <p class="text-sm">
-              <span>4:08:16 pm</span> / <span>00:00:00:065</span>
-              <span class="badge pass-bg log float-right">Pass</span>
+              <span>5:31:53 pm</span> / <span>00:00:00:130</span>
+              <span class="badge skip-bg log float-right">Skip</span>
             </p>
           </div>
           <div class="test-contents d-none">
 <div class="detail-head">
 <div class="p-v-10">
 <div class="info">
-<h5 class="test-status text-pass">testAddNewPet_tags_second_id</h5>
-<span class='badge badge-success'>09.05.2025 4:08:16 pm</span>
-<span class='badge badge-danger'>09.05.2025 4:08:16 pm</span>
-<span class='badge badge-default'>00:00:00:065</span>
+<h5 class="test-status text-skip">testUpdatePetWithFormData</h5>
+<span class='badge badge-success'>09.05.2025 5:31:53 pm</span>
+<span class='badge badge-danger'>09.05.2025 5:31:53 pm</span>
+<span class='badge badge-default'>00:00:00:130</span>
 &middot; <span class='uri-anchor badge badge-default'>#test-id=10</span>
 <span class='badge badge-default pointer float-right ml-1 et'><i class="fa fa-chevron-down"></i></span>
 <span class='badge badge-default pointer float-right ct'><i class="fa fa-chevron-up"></i></span>
 </div>
+<div class="m-t-15"><span class="badge badge-pill badge-default">UpdatePetFormData</span></div>
 </div>
 </div><div class="detail-body mt-4">
 <table class="table table-sm">
   <thead><tr><th class="status-col">Status</th><th class="timestamp-col">Timestamp</th><th class="details-col">Details</th></tr></thead>
   <tbody>
       <tr class="event-row">
-        <td><span class="badge log pass-bg">Pass</span></td>
-        <td>4:08:16 pm</td>
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>5:31:53 pm</td>
         <td>
-          Test case PASSED: testAddNewPet_tags_second_id
+          Test Started: testUpdatePetWithFormData
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log skip-bg">Skip</span></td>
+        <td>5:31:53 pm</td>
+        <td>
+          <span class='badge white-text orange'>Test Skipped: testUpdatePetWithFormData</span>
         </td>
       </tr>
   </tbody>
@@ -480,479 +578,84 @@ style='height:50px;margin-right:10px;'/>
 </div>
           </div>
         </li>
-        <li class="test-item"  status="pass" test-id="11"
+        <li class="test-item"  status="fail" test-id="11"
           author=""
-          tag=""
+          tag="UpdatePetFormData"
           device="">
           <div class="test-detail">
-            <p class="name">testAddNewPet_tags_second_name</p>
+            <p class="name">testUpdatePetWithFormData</p>
             <p class="text-sm">
-              <span>4:08:16 pm</span> / <span>00:00:00:170</span>
-              <span class="badge pass-bg log float-right">Pass</span>
+              <span>5:31:53 pm</span> / <span>00:00:00:189</span>
+              <span class="badge fail-bg log float-right">Fail</span>
             </p>
           </div>
           <div class="test-contents d-none">
 <div class="detail-head">
 <div class="p-v-10">
 <div class="info">
-<h5 class="test-status text-pass">testAddNewPet_tags_second_name</h5>
-<span class='badge badge-success'>09.05.2025 4:08:16 pm</span>
-<span class='badge badge-danger'>09.05.2025 4:08:16 pm</span>
-<span class='badge badge-default'>00:00:00:170</span>
+<h5 class="test-status text-fail">testUpdatePetWithFormData</h5>
+<span class='badge badge-success'>09.05.2025 5:31:53 pm</span>
+<span class='badge badge-danger'>09.05.2025 5:31:53 pm</span>
+<span class='badge badge-default'>00:00:00:189</span>
 &middot; <span class='uri-anchor badge badge-default'>#test-id=11</span>
 <span class='badge badge-default pointer float-right ml-1 et'><i class="fa fa-chevron-down"></i></span>
 <span class='badge badge-default pointer float-right ct'><i class="fa fa-chevron-up"></i></span>
 </div>
+<div class="m-t-15"><span class="badge badge-pill badge-default">UpdatePetFormData</span></div>
 </div>
 </div><div class="detail-body mt-4">
 <table class="table table-sm">
   <thead><tr><th class="status-col">Status</th><th class="timestamp-col">Timestamp</th><th class="details-col">Details</th></tr></thead>
   <tbody>
       <tr class="event-row">
-        <td><span class="badge log pass-bg">Pass</span></td>
-        <td>4:08:16 pm</td>
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>5:31:53 pm</td>
         <td>
-          Test case PASSED: testAddNewPet_tags_second_name
+          Test Started: testUpdatePetWithFormData
         </td>
       </tr>
-  </tbody>
-</table>
-</div>
-          </div>
-        </li>
-        <li class="test-item"  status="pass" test-id="12"
-          author=""
-          tag=""
-          device="">
-          <div class="test-detail">
-            <p class="name">testAddNewPet_status_available</p>
-            <p class="text-sm">
-              <span>4:08:16 pm</span> / <span>00:00:00:231</span>
-              <span class="badge pass-bg log float-right">Pass</span>
-            </p>
-          </div>
-          <div class="test-contents d-none">
-<div class="detail-head">
-<div class="p-v-10">
-<div class="info">
-<h5 class="test-status text-pass">testAddNewPet_status_available</h5>
-<span class='badge badge-success'>09.05.2025 4:08:16 pm</span>
-<span class='badge badge-danger'>09.05.2025 4:08:17 pm</span>
-<span class='badge badge-default'>00:00:00:231</span>
-&middot; <span class='uri-anchor badge badge-default'>#test-id=12</span>
-<span class='badge badge-default pointer float-right ml-1 et'><i class="fa fa-chevron-down"></i></span>
-<span class='badge badge-default pointer float-right ct'><i class="fa fa-chevron-up"></i></span>
-</div>
-</div>
-</div><div class="detail-body mt-4">
-<table class="table table-sm">
-  <thead><tr><th class="status-col">Status</th><th class="timestamp-col">Timestamp</th><th class="details-col">Details</th></tr></thead>
-  <tbody>
       <tr class="event-row">
-        <td><span class="badge log pass-bg">Pass</span></td>
-        <td>4:08:17 pm</td>
+        <td><span class="badge log fail-bg">Fail</span></td>
+        <td>5:31:53 pm</td>
         <td>
-          Test case PASSED: testAddNewPet_status_available
+          <span class='badge white-text red'>Test Failed: testUpdatePetWithFormData</span>
         </td>
       </tr>
-  </tbody>
-</table>
-</div>
-          </div>
-        </li>
-        <li class="test-item"  status="pass" test-id="13"
-          author=""
-          tag=""
-          device="">
-          <div class="test-detail">
-            <p class="name">testUploadPetImage_return_200OK_status_code</p>
-            <p class="text-sm">
-              <span>4:08:21 pm</span> / <span>00:00:00:001</span>
-              <span class="badge pass-bg log float-right">Pass</span>
-            </p>
-          </div>
-          <div class="test-contents d-none">
-<div class="detail-head">
-<div class="p-v-10">
-<div class="info">
-<h5 class="test-status text-pass">testUploadPetImage_return_200OK_status_code</h5>
-<span class='badge badge-success'>09.05.2025 4:08:21 pm</span>
-<span class='badge badge-danger'>09.05.2025 4:08:21 pm</span>
-<span class='badge badge-default'>00:00:00:001</span>
-&middot; <span class='uri-anchor badge badge-default'>#test-id=13</span>
-<span class='badge badge-default pointer float-right ml-1 et'><i class="fa fa-chevron-down"></i></span>
-<span class='badge badge-default pointer float-right ct'><i class="fa fa-chevron-up"></i></span>
-</div>
-</div>
-</div><div class="detail-body mt-4">
-<table class="table table-sm">
-  <thead><tr><th class="status-col">Status</th><th class="timestamp-col">Timestamp</th><th class="details-col">Details</th></tr></thead>
-  <tbody>
       <tr class="event-row">
-        <td><span class="badge log pass-bg">Pass</span></td>
-        <td>4:08:21 pm</td>
+        <td><span class="badge log fail-bg">Fail</span></td>
+        <td>5:31:53 pm</td>
         <td>
-          Test case PASSED: testUploadPetImage_return_200OK_status_code
-        </td>
-      </tr>
-  </tbody>
-</table>
-</div>
-          </div>
-        </li>
-        <li class="test-item"  status="pass" test-id="14"
-          author=""
-          tag=""
-          device="">
-          <div class="test-detail">
-            <p class="name">testUploadPetImage_type</p>
-            <p class="text-sm">
-              <span>4:08:21 pm</span> / <span>00:00:00:086</span>
-              <span class="badge pass-bg log float-right">Pass</span>
-            </p>
-          </div>
-          <div class="test-contents d-none">
-<div class="detail-head">
-<div class="p-v-10">
-<div class="info">
-<h5 class="test-status text-pass">testUploadPetImage_type</h5>
-<span class='badge badge-success'>09.05.2025 4:08:21 pm</span>
-<span class='badge badge-danger'>09.05.2025 4:08:21 pm</span>
-<span class='badge badge-default'>00:00:00:086</span>
-&middot; <span class='uri-anchor badge badge-default'>#test-id=14</span>
-<span class='badge badge-default pointer float-right ml-1 et'><i class="fa fa-chevron-down"></i></span>
-<span class='badge badge-default pointer float-right ct'><i class="fa fa-chevron-up"></i></span>
-</div>
-</div>
-</div><div class="detail-body mt-4">
-<table class="table table-sm">
-  <thead><tr><th class="status-col">Status</th><th class="timestamp-col">Timestamp</th><th class="details-col">Details</th></tr></thead>
-  <tbody>
-      <tr class="event-row">
-        <td><span class="badge log pass-bg">Pass</span></td>
-        <td>4:08:21 pm</td>
-        <td>
-          Test case PASSED: testUploadPetImage_type
-        </td>
-      </tr>
-  </tbody>
-</table>
-</div>
-          </div>
-        </li>
-        <li class="test-item"  status="pass" test-id="15"
-          author=""
-          tag=""
-          device="">
-          <div class="test-detail">
-            <p class="name">testUploadPetImage_Message</p>
-            <p class="text-sm">
-              <span>4:08:21 pm</span> / <span>00:00:00:035</span>
-              <span class="badge pass-bg log float-right">Pass</span>
-            </p>
-          </div>
-          <div class="test-contents d-none">
-<div class="detail-head">
-<div class="p-v-10">
-<div class="info">
-<h5 class="test-status text-pass">testUploadPetImage_Message</h5>
-<span class='badge badge-success'>09.05.2025 4:08:21 pm</span>
-<span class='badge badge-danger'>09.05.2025 4:08:21 pm</span>
-<span class='badge badge-default'>00:00:00:035</span>
-&middot; <span class='uri-anchor badge badge-default'>#test-id=15</span>
-<span class='badge badge-default pointer float-right ml-1 et'><i class="fa fa-chevron-down"></i></span>
-<span class='badge badge-default pointer float-right ct'><i class="fa fa-chevron-up"></i></span>
-</div>
-</div>
-</div><div class="detail-body mt-4">
-<table class="table table-sm">
-  <thead><tr><th class="status-col">Status</th><th class="timestamp-col">Timestamp</th><th class="details-col">Details</th></tr></thead>
-  <tbody>
-      <tr class="event-row">
-        <td><span class="badge log pass-bg">Pass</span></td>
-        <td>4:08:21 pm</td>
-        <td>
-          Test case PASSED: testUploadPetImage_Message
-        </td>
-      </tr>
-  </tbody>
-</table>
-</div>
-          </div>
-        </li>
-        <li class="test-item"  status="pass" test-id="16"
-          author=""
-          tag=""
-          device="">
-          <div class="test-detail">
-            <p class="name">testUpdate_Pet_name</p>
-            <p class="text-sm">
-              <span>4:08:23 pm</span> / <span>00:00:00:027</span>
-              <span class="badge pass-bg log float-right">Pass</span>
-            </p>
-          </div>
-          <div class="test-contents d-none">
-<div class="detail-head">
-<div class="p-v-10">
-<div class="info">
-<h5 class="test-status text-pass">testUpdate_Pet_name</h5>
-<span class='badge badge-success'>09.05.2025 4:08:23 pm</span>
-<span class='badge badge-danger'>09.05.2025 4:08:23 pm</span>
-<span class='badge badge-default'>00:00:00:027</span>
-&middot; <span class='uri-anchor badge badge-default'>#test-id=16</span>
-<span class='badge badge-default pointer float-right ml-1 et'><i class="fa fa-chevron-down"></i></span>
-<span class='badge badge-default pointer float-right ct'><i class="fa fa-chevron-up"></i></span>
-</div>
-</div>
-</div><div class="detail-body mt-4">
-<table class="table table-sm">
-  <thead><tr><th class="status-col">Status</th><th class="timestamp-col">Timestamp</th><th class="details-col">Details</th></tr></thead>
-  <tbody>
-      <tr class="event-row">
-        <td><span class="badge log pass-bg">Pass</span></td>
-        <td>4:08:23 pm</td>
-        <td>
-          Test case PASSED: testUpdate_Pet_name
-        </td>
-      </tr>
-  </tbody>
-</table>
-</div>
-          </div>
-        </li>
-        <li class="test-item"  status="pass" test-id="17"
-          author=""
-          tag=""
-          device="">
-          <div class="test-detail">
-            <p class="name">testUpdate_Pet_return_200OK_statusCode</p>
-            <p class="text-sm">
-              <span>4:08:23 pm</span> / <span>00:00:00:020</span>
-              <span class="badge pass-bg log float-right">Pass</span>
-            </p>
-          </div>
-          <div class="test-contents d-none">
-<div class="detail-head">
-<div class="p-v-10">
-<div class="info">
-<h5 class="test-status text-pass">testUpdate_Pet_return_200OK_statusCode</h5>
-<span class='badge badge-success'>09.05.2025 4:08:23 pm</span>
-<span class='badge badge-danger'>09.05.2025 4:08:23 pm</span>
-<span class='badge badge-default'>00:00:00:020</span>
-&middot; <span class='uri-anchor badge badge-default'>#test-id=17</span>
-<span class='badge badge-default pointer float-right ml-1 et'><i class="fa fa-chevron-down"></i></span>
-<span class='badge badge-default pointer float-right ct'><i class="fa fa-chevron-up"></i></span>
-</div>
-</div>
-</div><div class="detail-body mt-4">
-<table class="table table-sm">
-  <thead><tr><th class="status-col">Status</th><th class="timestamp-col">Timestamp</th><th class="details-col">Details</th></tr></thead>
-  <tbody>
-      <tr class="event-row">
-        <td><span class="badge log pass-bg">Pass</span></td>
-        <td>4:08:23 pm</td>
-        <td>
-          Test case PASSED: testUpdate_Pet_return_200OK_statusCode
-        </td>
-      </tr>
-  </tbody>
-</table>
-</div>
-          </div>
-        </li>
-        <li class="test-item"  status="pass" test-id="18"
-          author=""
-          tag=""
-          device="">
-          <div class="test-detail">
-            <p class="name">testUpdate_tags_first_name</p>
-            <p class="text-sm">
-              <span>4:08:23 pm</span> / <span>00:00:00:276</span>
-              <span class="badge pass-bg log float-right">Pass</span>
-            </p>
-          </div>
-          <div class="test-contents d-none">
-<div class="detail-head">
-<div class="p-v-10">
-<div class="info">
-<h5 class="test-status text-pass">testUpdate_tags_first_name</h5>
-<span class='badge badge-success'>09.05.2025 4:08:23 pm</span>
-<span class='badge badge-danger'>09.05.2025 4:08:23 pm</span>
-<span class='badge badge-default'>00:00:00:276</span>
-&middot; <span class='uri-anchor badge badge-default'>#test-id=18</span>
-<span class='badge badge-default pointer float-right ml-1 et'><i class="fa fa-chevron-down"></i></span>
-<span class='badge badge-default pointer float-right ct'><i class="fa fa-chevron-up"></i></span>
-</div>
-</div>
-</div><div class="detail-body mt-4">
-<table class="table table-sm">
-  <thead><tr><th class="status-col">Status</th><th class="timestamp-col">Timestamp</th><th class="details-col">Details</th></tr></thead>
-  <tbody>
-      <tr class="event-row">
-        <td><span class="badge log pass-bg">Pass</span></td>
-        <td>4:08:23 pm</td>
-        <td>
-          Test case PASSED: testUpdate_tags_first_name
-        </td>
-      </tr>
-  </tbody>
-</table>
-</div>
-          </div>
-        </li>
-        <li class="test-item"  status="pass" test-id="19"
-          author=""
-          tag=""
-          device="">
-          <div class="test-detail">
-            <p class="name">testUpdate_tags_second_name</p>
-            <p class="text-sm">
-              <span>4:08:23 pm</span> / <span>00:00:00:225</span>
-              <span class="badge pass-bg log float-right">Pass</span>
-            </p>
-          </div>
-          <div class="test-contents d-none">
-<div class="detail-head">
-<div class="p-v-10">
-<div class="info">
-<h5 class="test-status text-pass">testUpdate_tags_second_name</h5>
-<span class='badge badge-success'>09.05.2025 4:08:23 pm</span>
-<span class='badge badge-danger'>09.05.2025 4:08:24 pm</span>
-<span class='badge badge-default'>00:00:00:225</span>
-&middot; <span class='uri-anchor badge badge-default'>#test-id=19</span>
-<span class='badge badge-default pointer float-right ml-1 et'><i class="fa fa-chevron-down"></i></span>
-<span class='badge badge-default pointer float-right ct'><i class="fa fa-chevron-up"></i></span>
-</div>
-</div>
-</div><div class="detail-body mt-4">
-<table class="table table-sm">
-  <thead><tr><th class="status-col">Status</th><th class="timestamp-col">Timestamp</th><th class="details-col">Details</th></tr></thead>
-  <tbody>
-      <tr class="event-row">
-        <td><span class="badge log pass-bg">Pass</span></td>
-        <td>4:08:24 pm</td>
-        <td>
-          Test case PASSED: testUpdate_tags_second_name
-        </td>
-      </tr>
-  </tbody>
-</table>
-</div>
-          </div>
-        </li>
-        <li class="test-item"  status="pass" test-id="20"
-          author=""
-          tag=""
-          device="">
-          <div class="test-detail">
-            <p class="name">testListPetsByStatus_return_200OK_status_code</p>
-            <p class="text-sm">
-              <span>4:08:25 pm</span> / <span>00:00:00:041</span>
-              <span class="badge pass-bg log float-right">Pass</span>
-            </p>
-          </div>
-          <div class="test-contents d-none">
-<div class="detail-head">
-<div class="p-v-10">
-<div class="info">
-<h5 class="test-status text-pass">testListPetsByStatus_return_200OK_status_code</h5>
-<span class='badge badge-success'>09.05.2025 4:08:25 pm</span>
-<span class='badge badge-danger'>09.05.2025 4:08:25 pm</span>
-<span class='badge badge-default'>00:00:00:041</span>
-&middot; <span class='uri-anchor badge badge-default'>#test-id=20</span>
-<span class='badge badge-default pointer float-right ml-1 et'><i class="fa fa-chevron-down"></i></span>
-<span class='badge badge-default pointer float-right ct'><i class="fa fa-chevron-up"></i></span>
-</div>
-</div>
-</div><div class="detail-body mt-4">
-<table class="table table-sm">
-  <thead><tr><th class="status-col">Status</th><th class="timestamp-col">Timestamp</th><th class="details-col">Details</th></tr></thead>
-  <tbody>
-      <tr class="event-row">
-        <td><span class="badge log pass-bg">Pass</span></td>
-        <td>4:08:25 pm</td>
-        <td>
-          Test case PASSED: testListPetsByStatus_return_200OK_status_code
-        </td>
-      </tr>
-  </tbody>
-</table>
-</div>
-          </div>
-        </li>
-        <li class="test-item"  status="pass" test-id="21"
-          author=""
-          tag=""
-          device="">
-          <div class="test-detail">
-            <p class="name">testListPetsByPetId_return_200OK_status_code</p>
-            <p class="text-sm">
-              <span>4:08:28 pm</span> / <span>00:00:00:012</span>
-              <span class="badge pass-bg log float-right">Pass</span>
-            </p>
-          </div>
-          <div class="test-contents d-none">
-<div class="detail-head">
-<div class="p-v-10">
-<div class="info">
-<h5 class="test-status text-pass">testListPetsByPetId_return_200OK_status_code</h5>
-<span class='badge badge-success'>09.05.2025 4:08:28 pm</span>
-<span class='badge badge-danger'>09.05.2025 4:08:28 pm</span>
-<span class='badge badge-default'>00:00:00:012</span>
-&middot; <span class='uri-anchor badge badge-default'>#test-id=21</span>
-<span class='badge badge-default pointer float-right ml-1 et'><i class="fa fa-chevron-down"></i></span>
-<span class='badge badge-default pointer float-right ct'><i class="fa fa-chevron-up"></i></span>
-</div>
-</div>
-</div><div class="detail-body mt-4">
-<table class="table table-sm">
-  <thead><tr><th class="status-col">Status</th><th class="timestamp-col">Timestamp</th><th class="details-col">Details</th></tr></thead>
-  <tbody>
-      <tr class="event-row">
-        <td><span class="badge log pass-bg">Pass</span></td>
-        <td>4:08:28 pm</td>
-        <td>
-          Test case PASSED: testListPetsByPetId_return_200OK_status_code
-        </td>
-      </tr>
-  </tbody>
-</table>
-</div>
-          </div>
-        </li>
-        <li class="test-item"  status="pass" test-id="22"
-          author=""
-          tag=""
-          device="">
-          <div class="test-detail">
-            <p class="name">testListPetsByPetId_status</p>
-            <p class="text-sm">
-              <span>4:08:28 pm</span> / <span>00:00:00:148</span>
-              <span class="badge pass-bg log float-right">Pass</span>
-            </p>
-          </div>
-          <div class="test-contents d-none">
-<div class="detail-head">
-<div class="p-v-10">
-<div class="info">
-<h5 class="test-status text-pass">testListPetsByPetId_status</h5>
-<span class='badge badge-success'>09.05.2025 4:08:28 pm</span>
-<span class='badge badge-danger'>09.05.2025 4:08:28 pm</span>
-<span class='badge badge-default'>00:00:00:148</span>
-&middot; <span class='uri-anchor badge badge-default'>#test-id=22</span>
-<span class='badge badge-default pointer float-right ml-1 et'><i class="fa fa-chevron-down"></i></span>
-<span class='badge badge-default pointer float-right ct'><i class="fa fa-chevron-up"></i></span>
-</div>
-</div>
-</div><div class="detail-body mt-4">
-<table class="table table-sm">
-  <thead><tr><th class="status-col">Status</th><th class="timestamp-col">Timestamp</th><th class="details-col">Details</th></tr></thead>
-  <tbody>
-      <tr class="event-row">
-        <td><span class="badge log pass-bg">Pass</span></td>
-        <td>4:08:28 pm</td>
-        <td>
-          Test case PASSED: testListPetsByPetId_status
+          <textarea readonly class="code-block">java.lang.NullPointerException: Cannot invoke "java.lang.Long.longValue()" because the return value of "io.restassured.internal.common.path.ObjectConverter.convertObjectTo(Object, java.lang.Class)" is null
+	at io.restassured.path.json.JsonPath.getLong(JsonPath.java:340)
+	at api.test.PetTest.testUpdatePetWithFormData(PetTest.java:102)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:139)
+	at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:664)
+	at org.testng.internal.invokers.TestInvoker.retryFailed(TestInvoker.java:249)
+	at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:76)
+	at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:961)
+	at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:201)
+	at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:148)
+	at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:128)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+	at org.testng.TestRunner.privateRun(TestRunner.java:819)
+	at org.testng.TestRunner.run(TestRunner.java:619)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:443)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:437)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:397)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:336)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1301)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1228)
+	at org.testng.TestNG.runSuites(TestNG.java:1134)
+	at org.testng.TestNG.run(TestNG.java:1101)
+	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:293)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:91)
+</textarea>
+          
         </td>
       </tr>
   </tbody>
@@ -969,30 +672,330 @@ style='height:50px;margin-right:10px;'/>
 </div>
 <div class="test-content-detail"><div class="detail-body"></div></div>
 </div></div>
-<div class="container-fluid p-4 view dashboard-view">
+<div class="test-wrapper row view exception-view attributes-view">
+<div class="test-list">
+<div class="test-list-tools">
+<ul class="tools pull-left"><li><a href=""><span class="font-size-14">Exception</span></a></li></ul>
+<ul class="tools text-right"><li><a href="#"><span class="badge badge-primary">1</span></a></li></ul>
+</div>
+<div class="test-list-wrapper scrollable">
+<ul class="test-list-item">
+<li class="test-item">
+<div class="test-detail">
+<span class="meta">
+<span class='badge log badge-danger'>1</span>
+</span>
+<p class="name">java.lang.NullPointerException</p>
+<p class="duration text-sm">1 tests</p>
+</div>
+<div class="test-contents d-none">
+<div class="info">
+<h4>java.lang.NullPointerException</h4>
+<span status="fail" class='badge log badge-danger'>1 failed</span>
+</div>
+<table class='table table-sm mt-4'>
+<thead>
+<tr>
+<th class="status-col">Status</th>
+<th class="timestamp-col">Timestamp</th>
+<th>TestName</th>
+</tr>
+</thead>
+<tbody>
+<tr class="tag-test-status" status="fail">
+<td><span class="badge log fail-bg">Fail</span></td>
+<td>17:31:53 pm</td>
+<td>
+<a href="#" class="linked" test-id='11' id='11'>testUpdatePetWithFormData</a>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="test-content scrollable">
+<div class="test-content-detail">
+<div class="detail-body"></div>
+</div>
+</div>
+</div><div class="test-wrapper row view category-view attributes-view">
+<div class="test-list">
+<div class="test-list-tools">
+<ul class="tools pull-left"><li><a href=""><span class="font-size-14">Category</span></a></li></ul>
+<ul class="tools text-right"><li><a href="#"><span class="badge badge-primary">6</span></a></li></ul>
+</div>
+<div class="test-list-wrapper scrollable">
+<ul class="test-list-item">
+<li class="test-item">
+<div class="test-detail">
+<span class="meta">
+<span class='badge log pass-bg'>1</span>
+</span>
+<p class="name">ListPetsByStatus</p>
+<p class="duration text-sm">1 tests</p>
+</div>
+<div class="test-contents d-none">
+<div class="info">
+<h4>ListPetsByStatus</h4>
+<span status="pass" class='badge log pass-bg'>1 passed</span>
+</div>
+<table class='table table-sm mt-4'>
+<thead>
+<tr>
+<th class="status-col">Status</th>
+<th class="timestamp-col">Timestamp</th>
+<th>TestName</th>
+</tr>
+</thead>
+<tbody>
+<tr class="tag-test-status" status="pass">
+<td><span class="badge log pass-bg">Pass</span></td>
+<td>17:31:49 pm</td>
+<td>
+<a href="#" class="linked" test-id='7' id='7'>testListPetsByStatus</a>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</li>
+<li class="test-item">
+<div class="test-detail">
+<span class="meta">
+<span class='badge log pass-bg'>1</span>
+</span>
+<p class="name">ListPetById</p>
+<p class="duration text-sm">1 tests</p>
+</div>
+<div class="test-contents d-none">
+<div class="info">
+<h4>ListPetById</h4>
+<span status="pass" class='badge log pass-bg'>1 passed</span>
+</div>
+<table class='table table-sm mt-4'>
+<thead>
+<tr>
+<th class="status-col">Status</th>
+<th class="timestamp-col">Timestamp</th>
+<th>TestName</th>
+</tr>
+</thead>
+<tbody>
+<tr class="tag-test-status" status="pass">
+<td><span class="badge log pass-bg">Pass</span></td>
+<td>17:31:50 pm</td>
+<td>
+<a href="#" class="linked" test-id='8' id='8'>testListPetById</a>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</li>
+<li class="test-item">
+<div class="test-detail">
+<span class="meta">
+<span class='badge log pass-bg'>1</span>
+</span>
+<p class="name">UploadPetImage</p>
+<p class="duration text-sm">1 tests</p>
+</div>
+<div class="test-contents d-none">
+<div class="info">
+<h4>UploadPetImage</h4>
+<span status="pass" class='badge log pass-bg'>1 passed</span>
+</div>
+<table class='table table-sm mt-4'>
+<thead>
+<tr>
+<th class="status-col">Status</th>
+<th class="timestamp-col">Timestamp</th>
+<th>TestName</th>
+</tr>
+</thead>
+<tbody>
+<tr class="tag-test-status" status="pass">
+<td><span class="badge log pass-bg">Pass</span></td>
+<td>17:31:43 pm</td>
+<td>
+<a href="#" class="linked" test-id='5' id='5'>testUploadPetImage</a>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</li>
+<li class="test-item">
+<div class="test-detail">
+<span class="meta">
+<span class='badge log pass-bg'>1</span>
+</span>
+<p class="name">UpdatePet</p>
+<p class="duration text-sm">1 tests</p>
+</div>
+<div class="test-contents d-none">
+<div class="info">
+<h4>UpdatePet</h4>
+<span status="pass" class='badge log pass-bg'>1 passed</span>
+</div>
+<table class='table table-sm mt-4'>
+<thead>
+<tr>
+<th class="status-col">Status</th>
+<th class="timestamp-col">Timestamp</th>
+<th>TestName</th>
+</tr>
+</thead>
+<tbody>
+<tr class="tag-test-status" status="pass">
+<td><span class="badge log pass-bg">Pass</span></td>
+<td>17:31:47 pm</td>
+<td>
+<a href="#" class="linked" test-id='6' id='6'>testUpdatePetNameAndTags</a>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</li>
+<li class="test-item">
+<div class="test-detail">
+<span class="meta">
+<span class='badge log pass-bg'>4</span>
+</span>
+<p class="name">AddPet</p>
+<p class="duration text-sm">4 tests</p>
+</div>
+<div class="test-contents d-none">
+<div class="info">
+<h4>AddPet</h4>
+<span status="pass" class='badge log pass-bg'>4 passed</span>
+</div>
+<table class='table table-sm mt-4'>
+<thead>
+<tr>
+<th class="status-col">Status</th>
+<th class="timestamp-col">Timestamp</th>
+<th>TestName</th>
+</tr>
+</thead>
+<tbody>
+<tr class="tag-test-status" status="pass">
+<td><span class="badge log pass-bg">Pass</span></td>
+<td>17:31:41 pm</td>
+<td>
+<a href="#" class="linked" test-id='1' id='1'>testPetName</a>
+</td>
+</tr>
+<tr class="tag-test-status" status="pass">
+<td><span class="badge log pass-bg">Pass</span></td>
+<td>17:31:42 pm</td>
+<td>
+<a href="#" class="linked" test-id='2' id='2'>testPetCategory</a>
+</td>
+</tr>
+<tr class="tag-test-status" status="pass">
+<td><span class="badge log pass-bg">Pass</span></td>
+<td>17:31:42 pm</td>
+<td>
+<a href="#" class="linked" test-id='3' id='3'>testPetTags</a>
+</td>
+</tr>
+<tr class="tag-test-status" status="pass">
+<td><span class="badge log pass-bg">Pass</span></td>
+<td>17:31:43 pm</td>
+<td>
+<a href="#" class="linked" test-id='4' id='4'>testPetStatus</a>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</li>
+<li class="test-item">
+<div class="test-detail">
+<span class="meta">
+<span class='badge log badge-danger'>1</span>
+<span class='badge log badge-skip'>2</span>
+</span>
+<p class="name">UpdatePetFormData</p>
+<p class="duration text-sm">3 tests</p>
+</div>
+<div class="test-contents d-none">
+<div class="info">
+<h4>UpdatePetFormData</h4>
+<span status="fail" class='badge log badge-danger'>1 failed</span>
+<span status="skip" class='badge log badge-skip'>2 skipped</span>
+</div>
+<table class='table table-sm mt-4'>
+<thead>
+<tr>
+<th class="status-col">Status</th>
+<th class="timestamp-col">Timestamp</th>
+<th>TestName</th>
+</tr>
+</thead>
+<tbody>
+<tr class="tag-test-status" status="skip">
+<td><span class="badge log skip-bg">Skip</span></td>
+<td>17:31:52 pm</td>
+<td>
+<a href="#" class="linked" test-id='9' id='9'>testUpdatePetWithFormData</a>
+</td>
+</tr>
+<tr class="tag-test-status" status="skip">
+<td><span class="badge log skip-bg">Skip</span></td>
+<td>17:31:53 pm</td>
+<td>
+<a href="#" class="linked" test-id='10' id='10'>testUpdatePetWithFormData</a>
+</td>
+</tr>
+<tr class="tag-test-status" status="fail">
+<td><span class="badge log fail-bg">Fail</span></td>
+<td>17:31:53 pm</td>
+<td>
+<a href="#" class="linked" test-id='11' id='11'>testUpdatePetWithFormData</a>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="test-content scrollable">
+<div class="test-content-detail">
+<div class="detail-body"></div>
+</div>
+</div>
+</div><div class="container-fluid p-4 view dashboard-view">
 <div class="row">
 <div class="col-md-3">
 <div class="card"><div class="card-body">
 <p class="m-b-0">Started</p>
-<h3>Sept 5, 2025 04:07:55 pm</h3>
+<h3>Sept 5, 2025 05:31:22 pm</h3>
 </div></div>
 </div>
 <div class="col-md-3">
 <div class="card"><div class="card-body">
 <p class="m-b-0">Ended</p>
-<h3>Sept 5, 2025 04:08:28 pm</h3>
+<h3>Sept 5, 2025 05:31:54 pm</h3>
 </div></div>
 </div>
 <div class="col-md-3">
 <div class="card"><div class="card-body">
 <p class="m-b-0 text-pass">Tests Passed</p>
-<h3>22</h3>
+<h3>8</h3>
 </div></div>
 </div>
 <div class="col-md-3">
 <div class="card"><div class="card-body">
 <p class="m-b-0 text-fail">Tests Failed</p>
-<h3>0</h3>
+<h3>1</h3>
 </div></div>
 </div>
 </div>
@@ -1008,13 +1011,13 @@ style='height:50px;margin-right:10px;'/>
 </div>
 </div>
 <div class="card-footer">
-<div><small data-tooltip='100%'>
-<b>22</b> tests passed
+<div><small data-tooltip='72%'>
+<b>8</b> tests passed
 </small>
 </div>
 <div>
-<small data-tooltip='0%'><b>0</b> tests failed,
-<b>0</b> skipped, <b data-tooltip='0%'>0</b> others
+<small data-tooltip='9%'><b>1</b> tests failed,
+<b>2</b> skipped, <b data-tooltip='0%'>0</b> others
 </small>
 </div>
 </div>
@@ -1031,10 +1034,10 @@ style='height:50px;margin-right:10px;'/>
 </div>
 </div>
 <div class="card-footer">
-<div><small data-tooltip='100%'><b>22</b> events passed</small></div>
+<div><small data-tooltip='34%'><b>8</b> events passed</small></div>
 <div>
-<small data-tooltip='0%'><b>0</b> events failed,
-<b data-tooltip='%'>0</b> others
+<small data-tooltip='8%'><b>2</b> events failed,
+<b data-tooltip='%'>13</b> others
 </small>
 </div>
 </div>
@@ -1050,10 +1053,67 @@ style='height:50px;margin-right:10px;'/>
 </div></div>
 <script>
 var timeline = {
-"testAddNewPet_return_200_success_statusCode":0.032,"testAddNewPet_petId":3.124,"testAddNewPet_category_id":0.365,"testAddNewPet_category_name":0.403,"testAddNewPet_pet_name":0.184,"testAddNewPet_pet_photoUrls_firstElement":0.381,"testAddNewPet_pet_photoUrls_SecondElement":0.128,"testAddNewPet_tags_first_id":0.112,"testAddNewPet_tags_first_name":0.401,"testAddNewPet_tags_second_id":0.065,"testAddNewPet_tags_second_name":0.17,"testAddNewPet_status_available":0.231,"testUploadPetImage_return_200OK_status_code":0.001,"testUploadPetImage_type":0.086,"testUploadPetImage_Message":0.035,"testUpdate_Pet_name":0.027,"testUpdate_Pet_return_200OK_statusCode":0.02,"testUpdate_tags_first_name":0.276,"testUpdate_tags_second_name":0.225,"testListPetsByStatus_return_200OK_status_code":0.041,"testListPetsByPetId_return_200OK_status_code":0.012,"testListPetsByPetId_status":0.148
+"testPetName":0.268,"testPetCategory":0.145,"testPetTags":0.68,"testPetStatus":0.057,"testUploadPetImage":4.17,"testUpdatePetNameAndTags":1.652,"testListPetsByStatus":1.174,"testListPetById":1.284,"testUpdatePetWithFormData":1.473,"testUpdatePetWithFormData":0.13,"testUpdatePetWithFormData":0.189
 };
 </script>
 <div class="row">
+<div class="col-lg-6 col-md-12 category-container">
+<div class="card">
+<div class="card-header"><p>Tags</p></div>
+<div class="card-body pb-0 pt-0"><table class="table table-sm table-bordered">
+<thead><tr class="bg-gray"><th>Name</th><th>Passed</th><th>Failed</th><th>Skipped</th><th>Others</th><th>Passed %</th></tr></thead><tbody>
+<tr>
+<td>ListPetsByStatus</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>100%</td>
+</tr>
+<tr>
+<td>ListPetById</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>100%</td>
+</tr>
+<tr>
+<td>UploadPetImage</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>100%</td>
+</tr>
+<tr>
+<td>UpdatePet</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>100%</td>
+</tr>
+<tr>
+<td>AddPet</td>
+<td>4</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>100%</td>
+</tr>
+<tr>
+<td>UpdatePetFormData</td>
+<td>0</td>
+<td>1</td>
+<td>2</td>
+<td>0</td>
+<td>0%</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+</div>
 <div class="col-lg-6 col-md-12 sysenv-container">
 <div class="card">
 <div class="card-header"><p>System/Environment</p></div>
@@ -1085,10 +1145,10 @@ var timeline = {
 <script>
 var statusGroup = {
 parentCount: 5,
-passParent: 22,
-failParent: 0,
+passParent: 8,
+failParent: 1,
 warningParent: 0,
-skipParent: 0,
+skipParent: 2,
 childCount: 5,
 passChild: 0,
 failChild: 0,
@@ -1102,11 +1162,11 @@ warningGrandChild: 0,
 skipGrandChild: 0,
 infoGrandChild: 0,
 eventsCount: 5,
-passEvents: 22,
-failEvents: 0,
+passEvents: 8,
+failEvents: 2,
 warningEvents: 0,
-skipEvents: 0,
-infoEvents: 0
+skipEvents: 2,
+infoEvents: 11
 };
 </script>        </div>
       </div>

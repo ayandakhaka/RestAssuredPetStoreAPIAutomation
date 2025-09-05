@@ -5,8 +5,9 @@
     <classes>
       <class name="api.test.PetTest">
         <methods>
-          <include name="testListPetsByPetId_return_200OK_status_code"/>
-          <include name="setupData"/>
+          <include name="setupPet"/>
+          <include name="testListPetById"/>
+          <include name="testUpdatePetWithFormData"/>
         </methods>
       </class> <!-- api.test.PetTest -->
     </classes>
