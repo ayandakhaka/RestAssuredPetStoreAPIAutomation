@@ -5,8 +5,8 @@
     <classes>
       <class name="api.test.PetTest">
         <methods>
-          <include name="uploadPetImage"/>
-          <include name="testUploadPetImage"/>
+          <include name="testListPetsByPetId_return_200OK_status_code"/>
+          <include name="setupData"/>
         </methods>
       </class> <!-- api.test.PetTest -->
     </classes>

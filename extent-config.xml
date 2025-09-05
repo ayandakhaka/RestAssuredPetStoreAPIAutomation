@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<extentreports>
+    <configuration>
+        <!-- Report Theme: standard (light) or dark -->
+        <theme>dark</theme>
+
+        <!-- Document encoding -->
+        <encoding>UTF-8</encoding>
+
+        <!-- Protocol for scripts & styles -->
+        <protocol>http</protocol>
+
+        <!-- Document title (browser tab) -->
+        <documentTitle>Rest Assured API Automation Test Report</documentTitle>
+
+        <!-- Report name (top nav) -->
+        <reportName>
+            <![CDATA[
+                <div style="display:flex;align-items:center;">
+                    <img src='/RestAssuredPetStoreAPIAutomation\src\test\resources\images\R.png' 
+                         style='height:50px;margin-right:10px;'/>
+                    <span style='font-size:24px;font-weight:bold;color:#ffffff;'>Rest Assured API Automation Report</span>
+                </div>
+            ]]>
+        </reportName>
+
+        <!-- Chart location: top or bottom -->
+        <testViewChartLocation>top</testViewChartLocation>
+
+        <!-- Custom CSS styles -->
+        <styles>
+            <![CDATA[
+                body { font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif; background-color: #1e1e2f; }
+                .test.pass { background-color: #28a745 !important; }
+                .test.fail { background-color: #dc3545 !important; }
+                .test.skip { background-color: #ffc107 !important; }
+                .report-name { padding-left: 10px; color: #ffffff; }
+                .report-name > img { float: left; height: 60px; margin-right: 15px; }
+                .test-view { font-size: 14px; }
+                .test-view .node .label { font-weight: bold; }
+            ]]>
+        </styles>
+
+        <!-- Optional: custom JS -->
+        <scripts>
+            <![CDATA[
+                $(document).ready(function() {
+                    console.log("Fancy Extent Report Loaded!");
+                    // Example: toggle screenshots on click
+                    $('.test.fail .step-description img').click(function(){
+                        $(this).toggleClass('enlarge');
+                    });
+                });
+            ]]>
+        </scripts>
+    </configuration>
+</extentreports>

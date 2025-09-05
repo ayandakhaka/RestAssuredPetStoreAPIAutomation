@@ -1,35 +1,153 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results ignored="0" total="2" passed="2" failed="0" skipped="0">
+<testng-results ignored="0" total="22" passed="22" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2025-09-04T18:45:09 SAST" name="Default suite" finished-at="2025-09-04T18:45:37 SAST" duration-ms="28358">
+  <suite started-at="2025-09-05T16:07:54 SAST" name="MySuite" finished-at="2025-09-05T16:08:28 SAST" duration-ms="33823">
     <groups>
+      <group name="Update existing pet">
+        <method signature="PetTest.testUpdate_Pet_name()[pri:16, instance:api.test.PetTest@128d2484]" name="testUpdate_Pet_name" class="api.test.PetTest"/>
+        <method signature="PetTest.testUpdate_Pet_return_200OK_statusCode()[pri:17, instance:api.test.PetTest@128d2484]" name="testUpdate_Pet_return_200OK_statusCode" class="api.test.PetTest"/>
+        <method signature="PetTest.testUpdate_tags_first_name()[pri:18, instance:api.test.PetTest@128d2484]" name="testUpdate_tags_first_name" class="api.test.PetTest"/>
+        <method signature="PetTest.testUpdate_tags_second_name()[pri:19, instance:api.test.PetTest@128d2484]" name="testUpdate_tags_second_name" class="api.test.PetTest"/>
+      </group> <!-- Update existing pet -->
+      <group name="List pets by pet id">
+        <method signature="PetTest.testListPetsByPetId_return_200OK_status_code()[pri:21, instance:api.test.PetTest@128d2484]" name="testListPetsByPetId_return_200OK_status_code" class="api.test.PetTest"/>
+        <method signature="PetTest.testListPetsByPetId_status()[pri:22, instance:api.test.PetTest@128d2484]" name="testListPetsByPetId_status" class="api.test.PetTest"/>
+      </group> <!-- List pets by pet id -->
       <group name="Add new pet">
-        <method signature="PetTest.testAddNewPet()[pri:1, instance:api.test.PetTest@74fe5c40]" name="testAddNewPet" class="api.test.PetTest"/>
+        <method signature="PetTest.testAddNewPet_return_200_success_statusCode()[pri:1, instance:api.test.PetTest@128d2484]" name="testAddNewPet_return_200_success_statusCode" class="api.test.PetTest"/>
+        <method signature="PetTest.testAddNewPet_petId()[pri:2, instance:api.test.PetTest@128d2484]" name="testAddNewPet_petId" class="api.test.PetTest"/>
+        <method signature="PetTest.testAddNewPet_category_id()[pri:3, instance:api.test.PetTest@128d2484]" name="testAddNewPet_category_id" class="api.test.PetTest"/>
+        <method signature="PetTest.testAddNewPet_category_name()[pri:4, instance:api.test.PetTest@128d2484]" name="testAddNewPet_category_name" class="api.test.PetTest"/>
+        <method signature="PetTest.testAddNewPet_pet_name()[pri:5, instance:api.test.PetTest@128d2484]" name="testAddNewPet_pet_name" class="api.test.PetTest"/>
+        <method signature="PetTest.testAddNewPet_pet_photoUrls_firstElement()[pri:6, instance:api.test.PetTest@128d2484]" name="testAddNewPet_pet_photoUrls_firstElement" class="api.test.PetTest"/>
+        <method signature="PetTest.testAddNewPet_pet_photoUrls_SecondElement()[pri:7, instance:api.test.PetTest@128d2484]" name="testAddNewPet_pet_photoUrls_SecondElement" class="api.test.PetTest"/>
+        <method signature="PetTest.testAddNewPet_tags_first_id()[pri:8, instance:api.test.PetTest@128d2484]" name="testAddNewPet_tags_first_id" class="api.test.PetTest"/>
+        <method signature="PetTest.testAddNewPet_tags_first_name()[pri:9, instance:api.test.PetTest@128d2484]" name="testAddNewPet_tags_first_name" class="api.test.PetTest"/>
+        <method signature="PetTest.testAddNewPet_tags_second_id()[pri:10, instance:api.test.PetTest@128d2484]" name="testAddNewPet_tags_second_id" class="api.test.PetTest"/>
+        <method signature="PetTest.testAddNewPet_tags_second_name()[pri:11, instance:api.test.PetTest@128d2484]" name="testAddNewPet_tags_second_name" class="api.test.PetTest"/>
+        <method signature="PetTest.testAddNewPet_status_available()[pri:12, instance:api.test.PetTest@128d2484]" name="testAddNewPet_status_available" class="api.test.PetTest"/>
       </group> <!-- Add new pet -->
+      <group name="List pets by status">
+        <method signature="PetTest.testListPetsByStatus_return_200OK_status_code()[pri:20, instance:api.test.PetTest@128d2484]" name="testListPetsByStatus_return_200OK_status_code" class="api.test.PetTest"/>
+      </group> <!-- List pets by status -->
       <group name="Upload pet image">
-        <method signature="PetTest.testUploadPetImage()[pri:2, instance:api.test.PetTest@74fe5c40]" name="testUploadPetImage" class="api.test.PetTest"/>
+        <method signature="PetTest.testUploadPetImage_return_200OK_status_code()[pri:13, instance:api.test.PetTest@128d2484]" name="testUploadPetImage_return_200OK_status_code" class="api.test.PetTest"/>
+        <method signature="PetTest.testUploadPetImage_type()[pri:14, instance:api.test.PetTest@128d2484]" name="testUploadPetImage_type" class="api.test.PetTest"/>
+        <method signature="PetTest.testUploadPetImage_Message()[pri:15, instance:api.test.PetTest@128d2484]" name="testUploadPetImage_Message" class="api.test.PetTest"/>
       </group> <!-- Upload pet image -->
     </groups>
-    <test started-at="2025-09-04T18:45:09 SAST" name="Default test" finished-at="2025-09-04T18:45:37 SAST" duration-ms="28358">
+    <test started-at="2025-09-05T16:07:54 SAST" name="MyTests" finished-at="2025-09-05T16:08:28 SAST" duration-ms="33823">
       <class name="api.test.PetTest">
-        <test-method is-config="true" signature="addNewPet()[pri:0, instance:api.test.PetTest@74fe5c40]" started-at="2025-09-04T18:45:09 SAST" name="addNewPet" finished-at="2025-09-04T18:45:09 SAST" duration-ms="57" status="PASS">
+        <test-method is-config="true" signature="setupData()[pri:0, instance:api.test.PetTest@128d2484]" started-at="2025-09-05T16:07:56 SAST" name="setupData" finished-at="2025-09-05T16:08:10 SAST" duration-ms="13691" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- addNewPet -->
-        <test-method signature="testAddNewPet()[pri:1, instance:api.test.PetTest@74fe5c40]" started-at="2025-09-04T18:45:09 SAST" name="testAddNewPet" finished-at="2025-09-04T18:45:19 SAST" duration-ms="10286" status="PASS">
+        </test-method> <!-- setupData -->
+        <test-method signature="testAddNewPet_return_200_success_statusCode()[pri:1, instance:api.test.PetTest@128d2484]" started-at="2025-09-05T16:08:10 SAST" name="testAddNewPet_return_200_success_statusCode" finished-at="2025-09-05T16:08:10 SAST" duration-ms="96" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- testAddNewPet -->
-        <test-method is-config="true" signature="uploadPetImage()[pri:0, instance:api.test.PetTest@74fe5c40]" started-at="2025-09-04T18:45:19 SAST" name="uploadPetImage" finished-at="2025-09-04T18:45:19 SAST" duration-ms="0" status="PASS">
+        </test-method> <!-- testAddNewPet_return_200_success_statusCode -->
+        <test-method signature="testAddNewPet_petId()[pri:2, instance:api.test.PetTest@128d2484]" started-at="2025-09-05T16:08:10 SAST" name="testAddNewPet_petId" finished-at="2025-09-05T16:08:13 SAST" duration-ms="3124" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testAddNewPet_petId -->
+        <test-method signature="testAddNewPet_category_id()[pri:3, instance:api.test.PetTest@128d2484]" started-at="2025-09-05T16:08:13 SAST" name="testAddNewPet_category_id" finished-at="2025-09-05T16:08:14 SAST" duration-ms="385" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testAddNewPet_category_id -->
+        <test-method signature="testAddNewPet_category_name()[pri:4, instance:api.test.PetTest@128d2484]" started-at="2025-09-05T16:08:14 SAST" name="testAddNewPet_category_name" finished-at="2025-09-05T16:08:14 SAST" duration-ms="406" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testAddNewPet_category_name -->
+        <test-method signature="testAddNewPet_pet_name()[pri:5, instance:api.test.PetTest@128d2484]" started-at="2025-09-05T16:08:14 SAST" name="testAddNewPet_pet_name" finished-at="2025-09-05T16:08:14 SAST" duration-ms="206" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testAddNewPet_pet_name -->
+        <test-method signature="testAddNewPet_pet_photoUrls_firstElement()[pri:6, instance:api.test.PetTest@128d2484]" started-at="2025-09-05T16:08:14 SAST" name="testAddNewPet_pet_photoUrls_firstElement" finished-at="2025-09-05T16:08:15 SAST" duration-ms="501" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testAddNewPet_pet_photoUrls_firstElement -->
+        <test-method signature="testAddNewPet_pet_photoUrls_SecondElement()[pri:7, instance:api.test.PetTest@128d2484]" started-at="2025-09-05T16:08:15 SAST" name="testAddNewPet_pet_photoUrls_SecondElement" finished-at="2025-09-05T16:08:15 SAST" duration-ms="129" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testAddNewPet_pet_photoUrls_SecondElement -->
+        <test-method signature="testAddNewPet_tags_first_id()[pri:8, instance:api.test.PetTest@128d2484]" started-at="2025-09-05T16:08:15 SAST" name="testAddNewPet_tags_first_id" finished-at="2025-09-05T16:08:15 SAST" duration-ms="120" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testAddNewPet_tags_first_id -->
+        <test-method signature="testAddNewPet_tags_first_name()[pri:9, instance:api.test.PetTest@128d2484]" started-at="2025-09-05T16:08:15 SAST" name="testAddNewPet_tags_first_name" finished-at="2025-09-05T16:08:16 SAST" duration-ms="417" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testAddNewPet_tags_first_name -->
+        <test-method signature="testAddNewPet_tags_second_id()[pri:10, instance:api.test.PetTest@128d2484]" started-at="2025-09-05T16:08:16 SAST" name="testAddNewPet_tags_second_id" finished-at="2025-09-05T16:08:16 SAST" duration-ms="74" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testAddNewPet_tags_second_id -->
+        <test-method signature="testAddNewPet_tags_second_name()[pri:11, instance:api.test.PetTest@128d2484]" started-at="2025-09-05T16:08:16 SAST" name="testAddNewPet_tags_second_name" finished-at="2025-09-05T16:08:16 SAST" duration-ms="180" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testAddNewPet_tags_second_name -->
+        <test-method signature="testAddNewPet_status_available()[pri:12, instance:api.test.PetTest@128d2484]" started-at="2025-09-05T16:08:16 SAST" name="testAddNewPet_status_available" finished-at="2025-09-05T16:08:17 SAST" duration-ms="196" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testAddNewPet_status_available -->
+        <test-method is-config="true" signature="uploadPetImage()[pri:0, instance:api.test.PetTest@128d2484]" started-at="2025-09-05T16:08:17 SAST" name="uploadPetImage" depends-on-groups="Add new pet" finished-at="2025-09-05T16:08:21 SAST" duration-ms="4053" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- uploadPetImage -->
-        <test-method signature="testUploadPetImage()[pri:2, instance:api.test.PetTest@74fe5c40]" started-at="2025-09-04T18:45:19 SAST" name="testUploadPetImage" finished-at="2025-09-04T18:45:37 SAST" duration-ms="17815" status="PASS">
+        <test-method signature="testUploadPetImage_return_200OK_status_code()[pri:13, instance:api.test.PetTest@128d2484]" started-at="2025-09-05T16:08:21 SAST" name="testUploadPetImage_return_200OK_status_code" depends-on-groups="Add new pet" finished-at="2025-09-05T16:08:21 SAST" duration-ms="4" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- testUploadPetImage -->
+        </test-method> <!-- testUploadPetImage_return_200OK_status_code -->
+        <test-method signature="testUploadPetImage_type()[pri:14, instance:api.test.PetTest@128d2484]" started-at="2025-09-05T16:08:21 SAST" name="testUploadPetImage_type" depends-on-groups="Add new pet" finished-at="2025-09-05T16:08:21 SAST" duration-ms="95" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testUploadPetImage_type -->
+        <test-method signature="testUploadPetImage_Message()[pri:15, instance:api.test.PetTest@128d2484]" started-at="2025-09-05T16:08:21 SAST" name="testUploadPetImage_Message" depends-on-groups="Add new pet" finished-at="2025-09-05T16:08:21 SAST" duration-ms="35" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testUploadPetImage_Message -->
+        <test-method is-config="true" signature="updateExistingPet()[pri:0, instance:api.test.PetTest@128d2484]" started-at="2025-09-05T16:08:21 SAST" name="updateExistingPet" depends-on-groups="Upload pet image" finished-at="2025-09-05T16:08:23 SAST" duration-ms="1553" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- updateExistingPet -->
+        <test-method signature="testUpdate_Pet_name()[pri:16, instance:api.test.PetTest@128d2484]" started-at="2025-09-05T16:08:23 SAST" name="testUpdate_Pet_name" depends-on-groups="Upload pet image" finished-at="2025-09-05T16:08:23 SAST" duration-ms="28" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testUpdate_Pet_name -->
+        <test-method signature="testUpdate_Pet_return_200OK_statusCode()[pri:17, instance:api.test.PetTest@128d2484]" started-at="2025-09-05T16:08:23 SAST" name="testUpdate_Pet_return_200OK_statusCode" depends-on-groups="Upload pet image" finished-at="2025-09-05T16:08:23 SAST" duration-ms="22" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testUpdate_Pet_return_200OK_statusCode -->
+        <test-method signature="testUpdate_tags_first_name()[pri:18, instance:api.test.PetTest@128d2484]" started-at="2025-09-05T16:08:23 SAST" name="testUpdate_tags_first_name" depends-on-groups="Upload pet image" finished-at="2025-09-05T16:08:23 SAST" duration-ms="289" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testUpdate_tags_first_name -->
+        <test-method signature="testUpdate_tags_second_name()[pri:19, instance:api.test.PetTest@128d2484]" started-at="2025-09-05T16:08:23 SAST" name="testUpdate_tags_second_name" depends-on-groups="Upload pet image" finished-at="2025-09-05T16:08:24 SAST" duration-ms="237" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testUpdate_tags_second_name -->
+        <test-method is-config="true" signature="listPetsByStatus()[pri:0, instance:api.test.PetTest@128d2484]" started-at="2025-09-05T16:08:24 SAST" name="listPetsByStatus" depends-on-groups="Update existing pet" finished-at="2025-09-05T16:08:25 SAST" duration-ms="1275" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- listPetsByStatus -->
+        <test-method signature="testListPetsByStatus_return_200OK_status_code()[pri:20, instance:api.test.PetTest@128d2484]" started-at="2025-09-05T16:08:25 SAST" name="testListPetsByStatus_return_200OK_status_code" depends-on-groups="Update existing pet" finished-at="2025-09-05T16:08:25 SAST" duration-ms="42" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testListPetsByStatus_return_200OK_status_code -->
+        <test-method is-config="true" signature="listPetsByPetId()[pri:0, instance:api.test.PetTest@128d2484]" started-at="2025-09-05T16:08:25 SAST" name="listPetsByPetId" depends-on-groups="List pets by status" finished-at="2025-09-05T16:08:28 SAST" duration-ms="2629" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- listPetsByPetId -->
+        <test-method signature="testListPetsByPetId_return_200OK_status_code()[pri:21, instance:api.test.PetTest@128d2484]" started-at="2025-09-05T16:08:28 SAST" name="testListPetsByPetId_return_200OK_status_code" depends-on-groups="List pets by status" finished-at="2025-09-05T16:08:28 SAST" duration-ms="12" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testListPetsByPetId_return_200OK_status_code -->
+        <test-method signature="testListPetsByPetId_status()[pri:22, instance:api.test.PetTest@128d2484]" started-at="2025-09-05T16:08:28 SAST" name="testListPetsByPetId_status" depends-on-groups="List pets by status" finished-at="2025-09-05T16:08:28 SAST" duration-ms="157" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testListPetsByPetId_status -->
       </class> <!-- api.test.PetTest -->
-    </test> <!-- Default test -->
-  </suite> <!-- Default suite -->
+    </test> <!-- MyTests -->
+  </suite> <!-- MySuite -->
 </testng-results>
