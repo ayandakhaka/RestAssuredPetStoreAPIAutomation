@@ -3,13 +3,15 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="api.test.PetTest">
+      <class name="api.test.StoreTest">
         <methods>
-          <include name="setupPet"/>
-          <include name="testPetById"/>
-          <include name="testUpdatePetWithFormData"/>
+          <include name="testPlaceOrder"/>
+          <include name="testGetOrderById"/>
+          <include name="testDeleteByOrderId"/>
+          <include name="setupStore"/>
+          <include name="testGetOrderInventory"/>
         </methods>
-      </class> <!-- api.test.PetTest -->
+      </class> <!-- api.test.StoreTest -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

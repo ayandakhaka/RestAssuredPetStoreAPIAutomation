@@ -67,12 +67,15 @@ public class Routes {
     // -------------------- Store Endpoints --------------------
 
     /** Place an order for a pet */
-    public static String order_url = base_url + "/store/order";
+    public static String post_order_url = base_url + "/store/order";
 
     /** Get order by ID */
-    public static String orderById_url = base_url + "/store/order/{orderId}";
+    public static String get_orderById_url = base_url + "/store/order/{orderId}";
 
     /** Get store inventory (status counts for pets) */
-    public static String inventory_url = base_url + "/store/inventory";
+    public static String get_inventory_url = base_url + "/store/inventory";
+    
+    /** Delete order by ID */
+    public static String delete_orderById_url = base_url + "/store/order/{orderId}";
 
 }

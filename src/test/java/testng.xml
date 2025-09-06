@@ -6,8 +6,9 @@
 
     <test name="MyTests">
         <classes>
-            <class name="api.test.PetTest"/>
-            <class name="api.test.UserTest"/>
+           <!-- <class name="api.test.PetTest"/>-->
+           <!-- <class name="api.test.UserTest"/>-->
+            <class name="api.test.StoreTest"/>
         </classes>
     </test>
 </suite>

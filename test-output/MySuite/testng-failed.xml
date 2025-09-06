@@ -6,17 +6,12 @@
   </listeners>
   <test thread-count="5" name="MyTests(failed)">
     <classes>
-      <class name="api.test.UserTest">
+      <class name="api.test.StoreTest">
         <methods>
-          <include name="testGetExistingUser"/>
+          <include name="testGetOrderById"/>
+          <include name="setupStore"/>
         </methods>
-      </class> <!-- api.test.UserTest -->
-      <class name="api.test.PetTest">
-        <methods>
-          <include name="setupPet"/>
-          <include name="testDeletePetById"/>
-        </methods>
-      </class> <!-- api.test.PetTest -->
+      </class> <!-- api.test.StoreTest -->
     </classes>
   </test> <!-- MyTests(failed) -->
 </suite> <!-- Failed suite [MySuite] -->
