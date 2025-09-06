@@ -100,7 +100,7 @@ public class PetTest {
     @Test(priority = 9, groups = "UpdatePetFormData", dependsOnGroups = "ListPetById")
     public void testUpdatePetWithFormData() {
     	
-    	Long petId = response.jsonPath().getLong("id");
+    	//Long petId = response.jsonPath().getLong("id");
         // petId must exist and match an added pet
         newPet = new PetBuilder()
                 .withId(petId)
@@ -109,8 +109,21 @@ public class PetTest {
                 .build();
 
         response = PetEndPoints.updatePetWithFormData(newPet, petId);
+        Assert.assertEquals(response.getStatusCode(), 200);
+    }
+    
+    @Test(priority = 10, groups = "DeletPetById", dependsOnGroups = "UpdatePetFormData")
+    public void testDeletePetById() {
+        response = PetEndPoints.deletePetWithPetId(petId);
         response.then().log().all();
         Assert.assertEquals(response.getStatusCode(), 200);
+        
+        // Verify deletion by trying to GET the pet again
+        Response getResponse = PetEndPoints.getPetByPetId(petId);
+        response.then().log().all();
+        Assert.assertEquals(getResponse.getStatusCode(), 404);
+        Assert.assertEquals(getResponse.jsonPath().getString("message"), "Pet not found");
+        
     }
 
 }

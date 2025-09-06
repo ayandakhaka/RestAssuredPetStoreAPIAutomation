@@ -6,10 +6,15 @@
   </listeners>
   <test thread-count="5" name="MyTests(failed)">
     <classes>
+      <class name="api.test.UserTest">
+        <methods>
+          <include name="testGetExistingUser"/>
+        </methods>
+      </class> <!-- api.test.UserTest -->
       <class name="api.test.PetTest">
         <methods>
           <include name="setupPet"/>
-          <include name="testUpdatePetWithFormData"/>
+          <include name="testDeletePetById"/>
         </methods>
       </class> <!-- api.test.PetTest -->
     </classes>

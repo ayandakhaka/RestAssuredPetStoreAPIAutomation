@@ -1,0 +1,38 @@
+# Maven target directory
+/target/
+
+# IntelliJ IDEA files
+*.iml
+.idea/
+out/
+
+# Eclipse/STS files
+.project
+.classpath
+.settings/
+bin/
+
+# VS Code files
+.vscode/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# TestNG reports
+test-output/
+surefire-reports/
+emailable-report.html
+junitreports/
+
+# Temporary files
+*.tmp
+*.swp
+*.swo
+
+# Environment / credentials (if any)
+*.env
+*.properties.local

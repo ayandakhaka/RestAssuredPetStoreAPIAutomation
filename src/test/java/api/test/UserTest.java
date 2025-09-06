@@ -13,134 +13,130 @@ import api.endpoints.UserEndPoints;
 import api.payload.model.User;
 import io.restassured.response.Response;
 
+/**
+ * Test suite for User API endpoints.
+ * Covers happy-path CRUD operations, batch user creation,
+ * and login/logout functionality.
+ */
 public class UserTest {
 
-	Faker faker;
-	User userPayload;
-	List<User> users;
-	User userLogin;
+    private Faker faker;
+    private User userPayload;
+    private List<User> users;
+    private User loginUserPayload;
 
-	public UserTest() {
-		faker = new Faker();
-		userPayload = new User();
-		users = new ArrayList<>();
-		userLogin = new User();
-	}
+    public UserTest() {
+        faker = new Faker();
+        userPayload = new User();
+        users = new ArrayList<>();
+        loginUserPayload = new User();
+    }
 
-	@BeforeGroups(groups = "Happy path")
-	public void setupData() {
-		
-		userPayload.setId(faker.idNumber().hashCode());
-		userPayload.setUsername("tyrone.stehr");
-		userPayload.setFirstName(faker.name().firstName());
-		userPayload.setLastName(faker.name().lastName());
-		userPayload.setEmail(faker.internet().safeEmailAddress());
-		userPayload.setPassword(faker.internet().password(5, 10));
-		userPayload.setPhone(faker.phoneNumber().cellPhone());
+    /** Setup data for single user tests (Happy Path). */
+    @BeforeGroups(groups = "HappyPath")
+    public void setupSingleUserData() {
+        userPayload.setId(faker.idNumber().hashCode());
+        userPayload.setUsername("tyrone.stehr");
+        userPayload.setFirstName(faker.name().firstName());
+        userPayload.setLastName(faker.name().lastName());
+        userPayload.setEmail(faker.internet().safeEmailAddress());
+        userPayload.setPassword(faker.internet().password(5, 10));
+        userPayload.setPhone(faker.phoneNumber().cellPhone());
+    }
 
-	}
+    @Test(priority = 1, groups = "HappyPath")
+    public void testCreateNewUser() {
+        Response response = UserEndPoints.createUser(userPayload);
+        response.then().log().all();
+        Assert.assertEquals(response.getStatusCode(), 200, "User creation failed!");
+    }
 
-	@Test(priority = 1, groups = "Happy path")
-	public void testCreateNewUser() {
+    @Test(priority = 2, groups = "HappyPath")
+    public void testGetExistingUser() {
+        Response response = UserEndPoints.readUser(userPayload.getUsername());
+        response.then().log().all();
+        Assert.assertEquals(response.getStatusCode(), 200, "Failed to fetch existing user!");
+    }
 
-		Response response = UserEndPoints.createUser(userPayload);
-		response.then().log().all();
-		Assert.assertEquals(response.getStatusCode(), 200);
-	}
+    @Test(priority = 3, groups = "HappyPath")
+    public void testUpdateExistingUser() {
+        // Update lastname and email
+        userPayload.setLastName(faker.name().lastName());
+        userPayload.setEmail(faker.internet().safeEmailAddress());
 
-	@Test(priority = 2, groups = "Happy path")
-	public void testGetExistingUser() {
+        Response updateResponse = UserEndPoints.updateUser(userPayload.getUsername(), userPayload);
+        updateResponse.then().log().all();
+        Assert.assertEquals(updateResponse.getStatusCode(), 200, "User update failed!");
 
-		Response response = UserEndPoints.readUser(userPayload.getUsername());
-		response.then().log().all();
-		Assert.assertEquals(response.getStatusCode(), 200);
-	}
+        Response fetchResponse = UserEndPoints.readUser(userPayload.getUsername());
+        fetchResponse.then().log().all();
+        Assert.assertEquals(fetchResponse.getStatusCode(), 200, "Failed to fetch updated user!");
+    }
 
-	@Test(priority = 3, groups = "Happy path")
-	public void testUpdateExistingUser() {
+    @Test(priority = 4, groups = "HappyPath")
+    public void testDeleteExistingUser() {
+        Response response = UserEndPoints.deleteUser(userPayload.getUsername());
+        response.then().log().all();
+        Assert.assertEquals(response.getStatusCode(), 200, "User deletion failed!");
+    }
 
-		//Update user lastname and email
-		userPayload.setLastName(faker.name().lastName());
-		userPayload.setEmail(faker.internet().safeEmailAddress());
+    /** Setup data for batch user creation tests. */
+    @BeforeGroups(groups = "BatchUsers")
+    public void setupBatchUsers() {
+        User user1 = new User();
+        user1.setId(faker.idNumber().hashCode());
+        user1.setUsername(faker.name().username());
+        user1.setFirstName(faker.name().firstName());
+        user1.setLastName(faker.name().lastName());
+        user1.setEmail(faker.internet().safeEmailAddress());
+        user1.setPassword(faker.internet().password(5, 10));
+        user1.setPhone(faker.phoneNumber().cellPhone());
 
+        User user2 = new User();
+        user2.setId(faker.idNumber().hashCode());
+        user2.setUsername(faker.name().username());
+        user2.setFirstName(faker.name().firstName());
+        user2.setLastName(faker.name().lastName());
+        user2.setEmail(faker.internet().safeEmailAddress());
+        user2.setPassword(faker.internet().password(5, 10));
+        user2.setPhone(faker.phoneNumber().cellPhone());
 
-		Response responseBeforeUpdate = UserEndPoints.updateUser(userPayload.getUsername(), userPayload);
-		responseBeforeUpdate.then().log().all();
-		Assert.assertEquals(responseBeforeUpdate.getStatusCode(), 200);
+        users.add(user1);
+        users.add(user2);
+    }
 
-		Response responseAfterUpdate = UserEndPoints.readUser(userPayload.getUsername());
+    @Test(priority = 5, groups = "BatchUsers")
+    public void testCreateUsersWithList() {
+        Response response = UserEndPoints.createUsersWithList(users);
+        response.then().log().all();
+        Assert.assertEquals(response.getStatusCode(), 200, "Failed to create users with list!");
+    }
 
-		responseBeforeUpdate.then().log().all();
-		Assert.assertEquals(responseAfterUpdate.getStatusCode(), 200);
-	}
+    @Test(priority = 6, groups = "BatchUsers")
+    public void testCreateUsersWithArray() {
+        Response response = UserEndPoints.createUsersWithArray(users);
+        response.then().log().all();
+        Assert.assertEquals(response.getStatusCode(), 200, "Failed to create users with array!");
+    }
 
-	@Test(priority = 4, groups = "Happy path")
-	public void testDeleteExistingUser() {
+    /** Setup data for login tests. */
+    @BeforeGroups(groups = "Auth")
+    public void setupLoginUser() {
+        loginUserPayload.setUsername(faker.name().username());
+        loginUserPayload.setPassword(faker.internet().password(5, 10));
+    }
 
-		Response response = UserEndPoints.deleteUser(userPayload.getUsername());
-		response.then().log().all();
-		Assert.assertEquals(response.getStatusCode(), 200);
-	}
+    @Test(priority = 7, groups = "Auth")
+    public void testUserLogin() {
+        Response response = UserEndPoints.loginUser(loginUserPayload.getUsername(), loginUserPayload.getPassword());
+        response.then().log().all();
+        Assert.assertEquals(response.getStatusCode(), 200, "User login failed!");
+    }
 
-	@BeforeGroups(groups = "Create users with list")
-	public void createUsersWithList() {
-
-		User user1 = new User();
-
-		user1.setId(faker.idNumber().hashCode());
-		user1.setUsername(faker.name().username());
-		user1.setFirstName(faker.name().firstName());
-		user1.setLastName(faker.name().lastName());
-		user1.setEmail(faker.internet().safeEmailAddress());
-		user1.setPassword(faker.internet().password(5, 10));
-		user1.setPhone(faker.phoneNumber().cellPhone());
-
-		User user2 = new User();
-
-		user2.setId(faker.idNumber().hashCode());
-		user2.setUsername(faker.name().username());
-		user2.setFirstName(faker.name().firstName());
-		user2.setLastName(faker.name().lastName());
-		user2.setEmail(faker.internet().safeEmailAddress());
-		user2.setPassword(faker.internet().password(5, 10));
-		user2.setPhone(faker.phoneNumber().cellPhone());
-		
-		users.add(user1);
-		users.add(user2);
-	}
-	
-	@Test(groups = "Create users with list and array", priority = 5)
-	public void testCreateUsersWithList() {
-		Response response = UserEndPoints.createUsersWithList(users);
-		response.then().log().all();
-		Assert.assertEquals(response.getStatusCode(), 200);
-	}
-	
-	@Test(groups = "Create users with list and array", priority = 6)
-	public void testCreateUsersWithArray() {
-		Response response = UserEndPoints.createUsersWithArray(users);
-		response.then().log().all();
-		Assert.assertEquals(response.getStatusCode(), 200);
-	}
-	
-	@BeforeGroups(groups = "User login")
-	public void userLogin() {
-		userLogin.setUsername(faker.name().username());
-		userLogin.setPassword(faker.internet().password(5, 10));
-	}
-	
-	@Test(groups = "User login", priority = 7)
-	public void testUserLogin() {
-		Response response = UserEndPoints.loginUser(userLogin.getUsername(), userLogin.getPassword());
-		response.then().log().all();
-		Assert.assertEquals(response.getStatusCode(), 200);
-	}
-	
-	@Test(groups = "User logout", priority = 8)
-	public void testUserLogout() {
-		Response response = UserEndPoints.logoutUser();
-		response.then().log().all();
-		Assert.assertEquals(response.getStatusCode(), 200);
-	}
-
+    @Test(priority = 8, groups = "Auth")
+    public void testUserLogout() {
+        Response response = UserEndPoints.logoutUser();
+        response.then().log().all();
+        Assert.assertEquals(response.getStatusCode(), 200, "User logout failed!");
+    }
 }
