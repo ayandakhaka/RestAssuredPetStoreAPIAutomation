@@ -99,8 +99,7 @@ public class PetTest {
     // -------------------- Update Pet With Form Data --------------------
     @Test(priority = 9, groups = "UpdatePetFormData", dependsOnGroups = "ListPetById")
     public void testUpdatePetWithFormData() {
-    	
-    	//Long petId = response.jsonPath().getLong("id");
+    
         // petId must exist and match an added pet
         newPet = new PetBuilder()
                 .withId(petId)

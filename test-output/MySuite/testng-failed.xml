@@ -8,7 +8,7 @@
     <classes>
       <class name="api.test.StoreTest">
         <methods>
-          <include name="testGetOrderById"/>
+          <include name="testDeleteByOrderId"/>
           <include name="setupStore"/>
         </methods>
       </class> <!-- api.test.StoreTest -->

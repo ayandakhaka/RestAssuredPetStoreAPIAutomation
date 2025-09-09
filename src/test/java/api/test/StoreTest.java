@@ -8,11 +8,9 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 import com.github.javafaker.Faker;
-
-import api.endpoints.PetEndPoints;
 import api.endpoints.StoreEndpoints;
 import api.payload.model.Store;
-import api.payload.model.User;
+import api.utilities.Log;
 import io.restassured.response.Response;
 
 public class StoreTest {
@@ -29,6 +27,8 @@ public class StoreTest {
 
 	@BeforeClass
 	public void setupStore() {
+		
+		Log.info("****************** Seeting up store data**********************");
 		storePayload.setOrderId(faker.number().numberBetween(1000L, 9999L));
 		storePayload.setPetId(faker.number().numberBetween(100, 999));
 		storePayload.setQuantity(faker.number().numberBetween(1, 5));
@@ -41,6 +41,8 @@ public class StoreTest {
 
 	@Test(groups = "PlaceOrder", priority = 1)
 	public void testPlaceOrder() {
+		Log.startTestCase("testPlaceOrder");
+		Log.info("********************** Testing Place Order***********************");
 		response.then().log().all();
 		Assert.assertEquals(response.getStatusCode(), 200);
 		Assert.assertTrue(orderId > 0, "Order ID should be assigned by API");
@@ -52,6 +54,8 @@ public class StoreTest {
 
 	@Test(groups = "ListOrderById", dependsOnGroups = "PlaceOrder", priority = 2)
 	public void testGetOrderById() {
+		Log.info("***************************Testing List orders by Id**************************");
+		Log.startTestCase("testGetOrderById");
 		response = StoreEndpoints.getOrderById(orderId);
 		response.then().log().all();
 		Assert.assertEquals(response.getStatusCode(), 200);
@@ -59,6 +63,8 @@ public class StoreTest {
 	
 	@Test(groups = "ListOrderByInventory", dependsOnGroups = "ListOrderById", priority = 3)
 	public void testGetOrderInventory() {
+		Log.info("************************* Testing List Orders by Inventory*************************");
+		Log.startTestCase("testGetOrderInventory");
 		response = StoreEndpoints.getOrderByInventory();
 		response.then().log().all();
 		Assert.assertEquals(response.getStatusCode(), 200);
@@ -67,6 +73,8 @@ public class StoreTest {
 	
 	@Test(groups = "DeleteByOrderId", dependsOnGroups = "ListOrderByInventory", priority = 4)
 	public void testDeleteByOrderId() {
+		Log.info("**************************** Testing Delete Orders by Id**********************************");
+		Log.startTestCase("testDeleteByOrderId");
 		response = StoreEndpoints.deleteOrderById(orderId);
 		response.then().log().all();
 		Assert.assertEquals(response.getStatusCode(), 200);
@@ -75,7 +83,6 @@ public class StoreTest {
         Response getResponse = StoreEndpoints.getOrderById(orderId);
         response.then().log().all();
         Assert.assertEquals(getResponse.getStatusCode(), 404);
-       // Assert.assertEquals(getResponse.jsonPath().getString("message"), "Pet not found");
 
 	}
 
