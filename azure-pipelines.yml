@@ -1,32 +1,41 @@
 trigger:
-  - main
+- main
 
 pool:
   vmImage: 'ubuntu-latest'
 
+variables:
+  MAVEN_OPTS: "-Xmx1024m"
+
 steps:
-  - checkout: self
+# 1️⃣ Install JDK 17
+- task: JavaToolInstaller@0
+  inputs:
+    versionSpec: '17'
+    jdkArchitectureOption: 'x64'
+    jdkSourceOption: 'AzureDownload'
 
-  # Install Java (Option 1: JavaToolInstaller)
-  - task: JavaToolInstaller@0
-    inputs:
-      versionSpec: '17'
-      jdkArchitecture: 'x64'
+# 2️⃣ Verify Java & Maven
+- script: |
+    java -version
+    mvn -version
+  displayName: 'Verify Java & Maven'
 
-  # Build & Run Rest Assured tests
-  - script: mvn clean test -Dmaven.test.failure.ignore=true
-    displayName: 'Run Rest Assured API tests'
+# 3️⃣ Run Maven tests
+- script: mvn clean test
+  displayName: 'Run Maven Tests'
 
-  # Publish Test Results
-  - task: PublishTestResults@2
-    inputs:
-      testResultsFiles: '**/target/surefire-reports/*.xml'
-      testRunTitle: 'Rest Assured API Test Results'
-    condition: succeededOrFailed()
+# 4️⃣ Publish TestNG results
+- task: PublishTestResults@2
+  inputs:
+    testResultsFiles: '**/surefire-reports/*.xml'
+    testRunTitle: 'TestNG Results'
+    mergeTestResults: true
+    failTaskOnFailedTests: true
 
-  # Publish Artifacts
-  - task: PublishBuildArtifacts@1
-    inputs:
-      PathtoPublish: 'target'
-      ArtifactName: 'test-reports'
-      publishLocation: 'Container'
+# 5️⃣ Publish ExtentReports HTML as pipeline artifacts
+- task: PublishPipelineArtifact@1
+  inputs:
+    targetPath: 'target/extent-reports'   # Path where ExtentReports HTML is generated
+    artifact: 'ExtentReports'
+    publishLocation: 'pipeline'
