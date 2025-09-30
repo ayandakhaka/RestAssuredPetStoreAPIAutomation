@@ -8,14 +8,14 @@ variables:
   MAVEN_OPTS: "-Xmx1024m"
 
 steps:
-# 1️⃣ Install JDK 17
+# 1️⃣ Install JDK 17 automatically
 - task: JavaToolInstaller@0
   inputs:
     versionSpec: '17'
     jdkArchitectureOption: 'x64'
     jdkSourceOption: 'AzureDownload'
 
-# 2️⃣ Verify Java & Maven
+# 2️⃣ Verify Java & Maven versions
 - script: |
     java -version
     mvn -version
@@ -25,7 +25,7 @@ steps:
 - script: mvn clean test
   displayName: 'Run Maven Tests'
 
-# 4️⃣ Publish TestNG results
+# 4️⃣ Publish TestNG XML results
 - task: PublishTestResults@2
   inputs:
     testResultsFiles: '**/surefire-reports/*.xml'
@@ -33,9 +33,9 @@ steps:
     mergeTestResults: true
     failTaskOnFailedTests: true
 
-# 5️⃣ Publish ExtentReports HTML as pipeline artifacts
+# 5️⃣ Publish ExtentReports HTML as pipeline artifact
 - task: PublishPipelineArtifact@1
   inputs:
-    targetPath: 'target/extent-reports'   # Path where ExtentReports HTML is generated
+    targetPath: 'target/extent-reports'   # Folder where ExtentReports HTML is generated
     artifact: 'ExtentReports'
     publishLocation: 'pipeline'
