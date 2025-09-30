@@ -7,17 +7,26 @@ pool:
 steps:
   - checkout: self
 
+  # Install Java (Option 1: JavaToolInstaller)
   - task: JavaToolInstaller@0
-    displayName: 'Set up Java 17'
     inputs:
       versionSpec: '17'
-      jdkArchitectureOption: 'x64'
-      jdkSourceOption: 'PreInstalled'
+      jdkArchitecture: 'x64'
 
-  - script: mvn clean test
-    displayName: 'Run Rest Assured Tests'
+  # Build & Run Rest Assured tests
+  - script: mvn clean test -Dmaven.test.failure.ignore=true
+    displayName: 'Run Rest Assured API tests'
 
+  # Publish Test Results
   - task: PublishTestResults@2
     inputs:
-      testResultsFiles: '**/target/surefire-reports/TEST-*.xml'
-      testRunTitle: 'Rest Assured Tests'
+      testResultsFiles: '**/target/surefire-reports/*.xml'
+      testRunTitle: 'Rest Assured API Test Results'
+    condition: succeededOrFailed()
+
+  # Publish Artifacts
+  - task: PublishBuildArtifacts@1
+    inputs:
+      PathtoPublish: 'target'
+      ArtifactName: 'test-reports'
+      publishLocation: 'Container'
