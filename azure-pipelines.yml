@@ -1,0 +1,36 @@
+trigger:
+- main
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+variables:
+  MAVEN_OPTS: "-Xmx1024m"
+
+steps:
+# 1️⃣ Verify Java & Maven versions (already installed on Ubuntu agents)
+- script: |
+    echo "Java Version:"
+    java -version
+    echo "Maven Version:"
+    mvn -version
+  displayName: 'Verify Java & Maven'
+
+# 2️⃣ Run Maven tests
+- script: mvn clean test
+  displayName: 'Run Maven Tests'
+
+# 3️⃣ Publish TestNG XML results to Azure DevOps
+- task: PublishTestResults@2
+  inputs:
+    testResultsFiles: '**/surefire-reports/*.xml'
+    testRunTitle: 'TestNG Results'
+    mergeTestResults: true
+    failTaskOnFailedTests: true
+
+# 4️⃣ Publish ExtentReports HTML as a pipeline artifact
+- task: PublishPipelineArtifact@1
+  inputs:
+    targetPath: 'target/extent-reports'
+    artifact: 'ExtentReports'
+    publishLocation: 'pipeline'
