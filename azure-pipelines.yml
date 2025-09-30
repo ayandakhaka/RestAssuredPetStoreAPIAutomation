@@ -13,7 +13,7 @@ steps:
   inputs:
     versionSpec: '17'
     jdkArchitectureOption: 'x64'
-    jdkSourceOption: 'AzureDownload'  # <-- This ensures automatic download
+    jdkSourceOption: 'AzureDownload'  # ✅ ensures automatic download, no local file needed
 
 # 2️⃣ Verify Java & Maven versions
 - script: |
