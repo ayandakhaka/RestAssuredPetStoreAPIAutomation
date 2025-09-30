@@ -5,8 +5,7 @@ pool:
   vmImage: 'ubuntu-latest'
 
 steps:
-  - task: Checkout@1
-    displayName: 'Checkout repository'
+  - checkout: self
 
   - task: JavaToolInstaller@0
     displayName: 'Set up Java 17'
@@ -15,18 +14,10 @@ steps:
       jdkArchitectureOption: 'x64'
       jdkSourceOption: 'PreInstalled'
 
-  - task: Cache@2
-    inputs:
-      key: 'maven | "$(Agent.OS)" | $(Build.SourcesDirectory)/pom.xml'
-      path: ~/.m2/repository
-      restoreKeys: |
-        maven | "$(Agent.OS)"
-    displayName: 'Cache Maven packages'
-
   - script: mvn clean test
     displayName: 'Run Rest Assured Tests'
 
   - task: PublishTestResults@2
     inputs:
       testResultsFiles: '**/target/surefire-reports/TEST-*.xml'
-      testRunTitle: 'RestAssured Tests'
+      testRunTitle: 'Rest Assured Tests'
