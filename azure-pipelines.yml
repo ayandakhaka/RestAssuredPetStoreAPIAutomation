@@ -1,34 +1,37 @@
 trigger:
-  - main   # or your default branch
+  - main   # or your branch
 
 pool:
-  vmImage: 'ubuntu-latest'   # Use Microsoft-hosted Linux agent
+  vmImage: 'ubuntu-latest'
 
 steps:
-  # Step 1: Checkout code
+  # Checkout repo
   - task: Checkout@1
-    displayName: 'Checkout source code'
+    displayName: 'Checkout repository'
 
-  # Step 2: Set up JDK
-  - task: UseJavaVersion@1
+  # Install Java (replace with 11 if your project requires it)
+  - task: JavaToolInstaller@0
+    displayName: 'Set up Java 17'
     inputs:
-      versionSpec: '17'   # or 11 depending on your project
-      distribution: 'temurin'
+      versionSpec: '17'
+      jdkArchitectureOption: 'x64'
+      jdkSourceOption: 'PreInstalled'
 
-  # Step 3: Build & run Rest Assured tests with Maven
-  - script: mvn clean test -Dmaven.test.failure.ignore=true
-    displayName: 'Run Rest Assured API tests'
+  # Cache Maven dependencies
+  - task: Cache@2
+    inputs:
+      key: 'maven | "$(Agent.OS)" | **/pom.xml'
+      path: ~/.m2/repository
+      restoreKeys: |
+        maven | "$(Agent.OS)"
+    displayName: Cache Maven packages
 
-  # Step 4: Publish test results (TestNG/JUnit reports)
+  # Run tests
+  - script: mvn clean test
+    displayName: 'Run Rest Assured Tests'
+
+  # Publish results to Test tab
   - task: PublishTestResults@2
     inputs:
-      testResultsFiles: '**/target/surefire-reports/*.xml'
-      testRunTitle: 'Rest Assured API Test Results'
-    condition: succeededOrFailed()
-
-  # Step 5: Publish artifacts (optional: for reports/logs)
-  - task: PublishBuildArtifacts@1
-    inputs:
-      PathtoPublish: 'target'
-      ArtifactName: 'test-reports'
-      publishLocation: 'Container'
+      testResultsFiles: '**/target/surefire-reports/TEST-*.xml'
+      testRunTitle: 'RestAssured Tests'
