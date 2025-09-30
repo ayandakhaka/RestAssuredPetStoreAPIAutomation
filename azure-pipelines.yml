@@ -1,0 +1,34 @@
+trigger:
+  - main   # or your default branch
+
+pool:
+  vmImage: 'ubuntu-latest'   # Use Microsoft-hosted Linux agent
+
+steps:
+  # Step 1: Checkout code
+  - task: Checkout@1
+    displayName: 'Checkout source code'
+
+  # Step 2: Set up JDK
+  - task: UseJavaVersion@1
+    inputs:
+      versionSpec: '17'   # or 11 depending on your project
+      distribution: 'temurin'
+
+  # Step 3: Build & run Rest Assured tests with Maven
+  - script: mvn clean test -Dmaven.test.failure.ignore=true
+    displayName: 'Run Rest Assured API tests'
+
+  # Step 4: Publish test results (TestNG/JUnit reports)
+  - task: PublishTestResults@2
+    inputs:
+      testResultsFiles: '**/target/surefire-reports/*.xml'
+      testRunTitle: 'Rest Assured API Test Results'
+    condition: succeededOrFailed()
+
+  # Step 5: Publish artifacts (optional: for reports/logs)
+  - task: PublishBuildArtifacts@1
+    inputs:
+      PathtoPublish: 'target'
+      ArtifactName: 'test-reports'
+      publishLocation: 'Container'
