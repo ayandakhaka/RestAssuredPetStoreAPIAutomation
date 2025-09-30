@@ -1,15 +1,13 @@
 trigger:
-  - main   # or your branch
+  - main
 
 pool:
   vmImage: 'ubuntu-latest'
 
 steps:
-  # Checkout repo
   - task: Checkout@1
     displayName: 'Checkout repository'
 
-  # Install Java (replace with 11 if your project requires it)
   - task: JavaToolInstaller@0
     displayName: 'Set up Java 17'
     inputs:
@@ -17,20 +15,17 @@ steps:
       jdkArchitectureOption: 'x64'
       jdkSourceOption: 'PreInstalled'
 
-  # Cache Maven dependencies
   - task: Cache@2
     inputs:
-      key: 'maven | "$(Agent.OS)" | **/pom.xml'
+      key: 'maven | "$(Agent.OS)" | $(Build.SourcesDirectory)/pom.xml'
       path: ~/.m2/repository
       restoreKeys: |
         maven | "$(Agent.OS)"
-    displayName: Cache Maven packages
+    displayName: 'Cache Maven packages'
 
-  # Run tests
   - script: mvn clean test
     displayName: 'Run Rest Assured Tests'
 
-  # Publish results to Test tab
   - task: PublishTestResults@2
     inputs:
       testResultsFiles: '**/target/surefire-reports/TEST-*.xml'
