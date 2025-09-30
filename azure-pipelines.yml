@@ -8,14 +8,7 @@ variables:
   MAVEN_OPTS: "-Xmx1024m"
 
 steps:
-# 1️⃣ Install JDK 17 from the system package
-- task: JavaToolInstaller@0
-  inputs:
-    versionSpec: '17'
-    jdkArchitectureOption: 'x64'
-    jdkSourceOption: 'package'  # ✅ Use package on Linux agents
-
-# 2️⃣ Verify Java & Maven versions
+# 1️⃣ Verify Java & Maven versions (already installed on Ubuntu agents)
 - script: |
     echo "Java Version:"
     java -version
@@ -23,11 +16,11 @@ steps:
     mvn -version
   displayName: 'Verify Java & Maven'
 
-# 3️⃣ Run Maven tests
+# 2️⃣ Run Maven tests
 - script: mvn clean test
   displayName: 'Run Maven Tests'
 
-# 4️⃣ Publish TestNG XML results to Azure DevOps
+# 3️⃣ Publish TestNG XML results to Azure DevOps
 - task: PublishTestResults@2
   inputs:
     testResultsFiles: '**/surefire-reports/*.xml'
@@ -35,7 +28,7 @@ steps:
     mergeTestResults: true
     failTaskOnFailedTests: true
 
-# 5️⃣ Publish ExtentReports HTML as a pipeline artifact
+# 4️⃣ Publish ExtentReports HTML as a pipeline artifact
 - task: PublishPipelineArtifact@1
   inputs:
     targetPath: 'target/extent-reports'
