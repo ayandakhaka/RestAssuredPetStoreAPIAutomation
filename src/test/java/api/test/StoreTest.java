@@ -41,7 +41,6 @@ public class StoreTest {
 
 	@Test(groups = "PlaceOrder", priority = 1)
 	public void testPlaceOrder() {
-		Log.startTestCase("testPlaceOrder");
 		Log.info("********************** Testing Place Order***********************");
 		response.then().log().all();
 		Assert.assertEquals(response.getStatusCode(), 200);
@@ -55,7 +54,6 @@ public class StoreTest {
 	@Test(groups = "ListOrderById", dependsOnGroups = "PlaceOrder", priority = 2)
 	public void testGetOrderById() {
 		Log.info("***************************Testing List orders by Id**************************");
-		Log.startTestCase("testGetOrderById");
 		response = StoreEndpoints.getOrderById(orderId);
 		response.then().log().all();
 		Assert.assertEquals(response.getStatusCode(), 200);
@@ -64,7 +62,6 @@ public class StoreTest {
 	@Test(groups = "ListOrderByInventory", dependsOnGroups = "ListOrderById", priority = 3)
 	public void testGetOrderInventory() {
 		Log.info("************************* Testing List Orders by Inventory*************************");
-		Log.startTestCase("testGetOrderInventory");
 		response = StoreEndpoints.getOrderByInventory();
 		response.then().log().all();
 		Assert.assertEquals(response.getStatusCode(), 200);
@@ -74,7 +71,6 @@ public class StoreTest {
 	@Test(groups = "DeleteByOrderId", dependsOnGroups = "ListOrderByInventory", priority = 4)
 	public void testDeleteByOrderId() {
 		Log.info("**************************** Testing Delete Orders by Id**********************************");
-		Log.startTestCase("testDeleteByOrderId");
 		response = StoreEndpoints.deleteOrderById(orderId);
 		response.then().log().all();
 		Assert.assertEquals(response.getStatusCode(), 200);
