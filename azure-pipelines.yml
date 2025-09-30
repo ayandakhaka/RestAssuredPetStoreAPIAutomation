@@ -8,12 +8,12 @@ variables:
   MAVEN_OPTS: "-Xmx1024m"
 
 steps:
-# 1️⃣ Install JDK 17 automatically from Azure
+# 1️⃣ Install JDK 17 from the system package
 - task: JavaToolInstaller@0
   inputs:
     versionSpec: '17'
     jdkArchitectureOption: 'x64'
-    jdkSourceOption: 'AzureDownload'  # ✅ ensures automatic download, no local file needed
+    jdkSourceOption: 'package'  # ✅ Use package on Linux agents
 
 # 2️⃣ Verify Java & Maven versions
 - script: |
@@ -38,6 +38,6 @@ steps:
 # 5️⃣ Publish ExtentReports HTML as a pipeline artifact
 - task: PublishPipelineArtifact@1
   inputs:
-    targetPath: 'target/extent-reports'   # Folder where ExtentReports HTML is generated
+    targetPath: 'target/extent-reports'
     artifact: 'ExtentReports'
     publishLocation: 'pipeline'
