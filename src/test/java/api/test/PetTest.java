@@ -92,6 +92,7 @@ public class PetTest {
     @Test(priority = 8, groups = "ListPetById", dependsOnGroups = "ListPetsByStatus")
     public void testListPetById() {
         response = PetEndPoints.getPetByPetId(petId);
+        System.out.println("Status code = " + response.getStatusCode());
         Assert.assertEquals(response.getStatusCode(), 200);
         Assert.assertEquals(response.jsonPath().getString("status"), newPet.getStatus());
     }
