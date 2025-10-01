@@ -112,7 +112,7 @@ public class PetTest {
     }
     
     @Test(priority = 10, groups = "DeletPetById")
-    public void testDeletePetById() {
+    public void testDeletePetById() throws InterruptedException {
     	
     	Pet tempPet = new PetBuilder()
     			.withName("TempPet")
@@ -129,6 +129,7 @@ public class PetTest {
         
         // Verify deletion by trying to GET the pet again
         Response getResponse = PetEndPoints.getPetByPetId(tempPetId);
+        Thread.sleep(1000);
         getResponse.then().log().all();
         Assert.assertEquals(getResponse.getStatusCode(), 404);
         Assert.assertEquals(getResponse.jsonPath().getString("message"), "Pet not found");
