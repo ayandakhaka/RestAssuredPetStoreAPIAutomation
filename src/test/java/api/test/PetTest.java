@@ -61,7 +61,7 @@ public class PetTest {
     }
 
     // -------------------- Upload Pet Image --------------------
-    @Test(priority = 5, groups = "UploadPetImage", dependsOnGroups = "AddPet")
+    @Test(priority = 5, groups = "UploadPetImage")
     public void testUploadPetImage() {
         response = PetEndPoints.uploadPetImage("src/test/resources/images/pet_image.jpg", petId);
         Assert.assertEquals(response.getStatusCode(), 200);
@@ -69,7 +69,7 @@ public class PetTest {
     }
 
     // -------------------- Update Pet --------------------
-    @Test(priority = 6, groups = "UpdatePet", dependsOnGroups = "UploadPetImage")
+    @Test(priority = 6, groups = "UpdatePet")
     public void testUpdatePetNameAndTags() {
         newPet.setName("BuddyUpdated");
         newPet.setTags(Arrays.asList(new Tag(101, "friendly"), new Tag(102, "active")));
@@ -82,14 +82,14 @@ public class PetTest {
     }
 
     // -------------------- List Pets by Status --------------------
-    @Test(priority = 7, groups = "ListPetsByStatus", dependsOnGroups = "UpdatePet")
+    @Test(priority = 7, groups = "ListPetsByStatus")
     public void testListPetsByStatus() {
         response = PetEndPoints.getPetByStatus();
         Assert.assertEquals(response.getStatusCode(), 200);
     }
 
     // -------------------- List Pet by Pet ID --------------------
-    @Test(priority = 8, groups = "ListPetById", dependsOnGroups = "ListPetsByStatus")
+    @Test(priority = 8, groups = "ListPetById")
     public void testListPetById() {
         response = PetEndPoints.getPetByPetId(petId);
         Assert.assertEquals(response.getStatusCode(), 200);
@@ -97,7 +97,7 @@ public class PetTest {
     }
 
     // -------------------- Update Pet With Form Data --------------------
-    @Test(priority = 9, groups = "UpdatePetFormData", dependsOnGroups = "ListPetById")
+    @Test(priority = 9, groups = "UpdatePetFormData")
     public void testUpdatePetWithFormData() {
     
         // petId must exist and match an added pet
@@ -111,18 +111,27 @@ public class PetTest {
         Assert.assertEquals(response.getStatusCode(), 200);
     }
     
-    @Test(priority = 10, groups = "DeletPetById", dependsOnGroups = "UpdatePetFormData")
+    @Test(priority = 10, groups = "DeletPetById")
     public void testDeletePetById() {
-        response = PetEndPoints.deletePetWithPetId(petId);
-        response.then().log().all();
-        Assert.assertEquals(response.getStatusCode(), 200);
+    	
+    	Pet tempPet = new PetBuilder()
+    			.withName("TempPet")
+    			.withCategory(new Category(2, "Cats"))
+    			.withStatus("available")
+    			.build();
+        Response createResp = PetEndPoints.AddNewPet(tempPet);
+        Long tempPetId = createResp.jsonPath().getLong("id");
+        
+        // Now delete the pet
+        Response deleteResponse = PetEndPoints.deletePetWithPetId(tempPetId);
+        deleteResponse.then().log().all();
+        Assert.assertEquals(deleteResponse.getStatusCode(), 200);
         
         // Verify deletion by trying to GET the pet again
-        Response getResponse = PetEndPoints.getPetByPetId(petId);
-        response.then().log().all();
+        Response getResponse = PetEndPoints.getPetByPetId(tempPetId);
+        getResponse.then().log().all();
         Assert.assertEquals(getResponse.getStatusCode(), 404);
         Assert.assertEquals(getResponse.jsonPath().getString("message"), "Pet not found");
-        
     }
 
 }

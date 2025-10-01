@@ -51,7 +51,7 @@ public class StoreTest {
 		Assert.assertEquals(response.jsonPath().getBoolean("complete"), this.storePayload.isComplete());
 	}
 
-	@Test(groups = "ListOrderById", dependsOnGroups = "PlaceOrder", priority = 2)
+	@Test(groups = "ListOrderById", priority = 2)
 	public void testGetOrderById() {
 		Log.info("***************************Testing List orders by Id**************************");
 		response = StoreEndpoints.getOrderById(orderId);
@@ -59,7 +59,7 @@ public class StoreTest {
 		Assert.assertEquals(response.getStatusCode(), 200);
 	}
 	
-	@Test(groups = "ListOrderByInventory", dependsOnGroups = "ListOrderById", priority = 3)
+	@Test(groups = "ListOrderByInventory", priority = 3)
 	public void testGetOrderInventory() {
 		Log.info("************************* Testing List Orders by Inventory*************************");
 		response = StoreEndpoints.getOrderByInventory();
@@ -68,7 +68,7 @@ public class StoreTest {
 
 	}
 	
-	@Test(groups = "DeleteByOrderId", dependsOnGroups = "ListOrderByInventory", priority = 4)
+	@Test(groups = "DeleteByOrderId", priority = 4)
 	public void testDeleteByOrderId() {
 		Log.info("**************************** Testing Delete Orders by Id**********************************");
 		response = StoreEndpoints.deleteOrderById(orderId);

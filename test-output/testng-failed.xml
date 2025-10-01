@@ -1,28 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
-<suite name="Failed suite [SwaggerAPISuite]">
-  <listeners>
-    <listener class-name="api.utilities.ListenerClass"/>
-  </listeners>
-  <test thread-count="5" name="SwaggerAPIRegression(failed)">
+<suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
+  <test thread-count="5" name="Default test(failed)">
     <classes>
       <class name="api.test.UserTest">
         <methods>
           <include name="testGetExistingUser"/>
         </methods>
       </class> <!-- api.test.UserTest -->
-      <class name="api.test.StoreTest">
-        <methods>
-          <include name="testDeleteByOrderId"/>
-          <include name="setupStore"/>
-        </methods>
-      </class> <!-- api.test.StoreTest -->
-      <class name="api.test.PetTest">
-        <methods>
-          <include name="testDeletePetById"/>
-          <include name="setupPet"/>
-        </methods>
-      </class> <!-- api.test.PetTest -->
     </classes>
-  </test> <!-- SwaggerAPIRegression(failed) -->
-</suite> <!-- Failed suite [SwaggerAPISuite] -->
+  </test> <!-- Default test(failed) -->
+</suite> <!-- Failed suite [Default suite] -->

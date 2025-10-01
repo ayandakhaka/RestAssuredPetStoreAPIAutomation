@@ -55,6 +55,7 @@ public class UserTest {
     public void testGetExistingUser() {
         Response response = UserEndPoints.readUser(userPayload.getUsername());
         response.then().log().all();
+        System.out.println("Status code = " + response.getStatusCode());
         Assert.assertEquals(response.getStatusCode(), 200, "Failed to fetch existing user!");
     }
 
