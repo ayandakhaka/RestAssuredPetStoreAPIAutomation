@@ -14,7 +14,7 @@ variables:
 
 steps:
 
-- script: mkdir -p ~/.m2/repository
+- script: mkdir -p $(HOME)/.m2/repository
   displayName: 'Ensure Maven cache directory exists'
 
 # 1️⃣ Cache Maven dependencies to speed up builds
