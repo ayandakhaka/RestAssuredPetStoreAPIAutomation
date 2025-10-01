@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<suite name="MySuite">
+<suite name="SwaggerAPISuite" parallel="false" >
     <listeners>
         <listener class-name="api.utilities.ListenerClass"/>
     </listeners>
 
-    <test name="MyTests">
+    <test name="SwaggerAPIRegression">
         <classes>
-           <!-- <class name="api.test.PetTest"/>-->
-           <!-- <class name="api.test.UserTest"/>-->
+            <class name="api.test.PetTest"/>
+            <class name="api.test.UserTest"/>
             <class name="api.test.StoreTest"/>
         </classes>
     </test>
