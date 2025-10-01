@@ -1,4 +1,4 @@
-# Trigger pipeline on main branch
+# Trigger on main branch
 trigger:
   - main
 
@@ -6,61 +6,74 @@ pool:
   vmImage: 'ubuntu-latest'
 
 variables:
-  MAVEN_OPTS: "-Xmx1024m"
-  BUILD_NUMBER: $(Build.BuildNumber)
-  GIT_COMMIT: $(Build.SourceVersion)
+  IMAGE_NAME: 'restassured-tests'
+  IMAGE_TAG: '$(Build.BuildId)'
+  DOCKER_REGISTRY: 'myregistry.azurecr.io'   # Change to your ACR or DockerHub registry
 
-steps:
+stages:
+# 1️⃣ Build Stage
+- stage: Build
+  displayName: 'Build Docker Image'
+  jobs:
+    - job: Build
+      steps:
+        - checkout: self
 
-- script: mkdir -p $(HOME)/.m2/repository
-  displayName: 'Ensure Maven cache directory exists'
+        - task: Docker@2
+          displayName: 'Build Docker Image'
+          inputs:
+            command: build
+            repository: $(DOCKER_REGISTRY)/$(IMAGE_NAME)
+            tags: |
+              $(IMAGE_TAG)
+            Dockerfile: '**/Dockerfile'
 
-- task: Cache@2
-  inputs:
-    key: 'maven | "$(Agent.OS)" | pom.xml'
-    path: $(HOME)/.m2/repository
-    restoreKeys: |
-      maven | "$(Agent.OS)"
+# 2️⃣ Test Stage
+- stage: Test
+  displayName: 'Run Tests inside Docker'
+  dependsOn: Build
+  jobs:
+    - job: Test
+      steps:
+        - script: |
+            echo "Running tests inside Docker..."
+            docker run --rm $(DOCKER_REGISTRY)/$(IMAGE_NAME):$(IMAGE_TAG) \
+              mvn clean test -DsuiteXmlFile=testng.xml
+          displayName: 'Execute TestNG Tests'
 
-- script: |
-    echo "Java Version:"
-    java -version
-    echo "Maven Version:"
-    mvn -version
-  displayName: 'Verify Java & Maven'
+        - task: PublishTestResults@2
+          inputs:
+            testResultsFiles: '**/target/surefire-reports/*.xml'
+            testRunTitle: 'TestNG Results in Docker'
+            mergeTestResults: true
+            failTaskOnFailedTests: true
 
-- script: |
-    mvn clean test -DsuiteXmlFile=testng.xml -T 2C -B -e \
-      -DbuildNumber=$(BUILD_NUMBER) \
-      -DgitCommit=$(GIT_COMMIT)
-  displayName: 'Run Maven Tests with TestNG XML & Parallel Execution'
+        - task: PublishPipelineArtifact@1
+          inputs:
+            targetPath: 'target/extent-reports'
+            artifact: 'ExtentReports'
+            publishLocation: 'pipeline'
 
-- task: PublishTestResults@2
-  inputs:
-    testResultsFiles: '**/surefire-reports/*.xml'
-    testRunTitle: 'TestNG Results'
-    mergeTestResults: true
-    failTaskOnFailedTests: true
+# 3️⃣ Push Stage
+- stage: Push
+  displayName: 'Push Docker Image'
+  dependsOn: Test
+  condition: succeeded()
+  jobs:
+    - job: Push
+      steps:
+        # Log in to Azure Container Registry
+        - task: Docker@2
+          displayName: 'Login to ACR'
+          inputs:
+            command: login
+            containerRegistry: 'MyACRServiceConnection' # Service connection in Azure DevOps
 
-- task: PublishPipelineArtifact@1
-  inputs:
-    targetPath: 'target/extent-reports'
-    artifact: 'ExtentReports'
-    publishLocation: 'pipeline'
-
-- task: PublishPipelineArtifact@1
-  inputs:
-    targetPath: 'target/surefire-reports'
-    artifact: 'SurefireReports'
-    publishLocation: 'pipeline'
-
-- script: |
-    echo "Flaky Test Summary:"
-    grep -i "retry" target/surefire-reports/*.xml || echo "No flaky tests detected"
-  displayName: 'Flaky Test Summary'
-
-- script: |
-    echo "Build Number: $(BUILD_NUMBER)"
-    echo "Git Commit: $(GIT_COMMIT)"
-    echo "Branch: $(Build.SourceBranch)"
-  displayName: 'Log Build & Environment Info'
+        - task: Docker@2
+          displayName: 'Push Docker Image'
+          inputs:
+            command: push
+            repository: $(DOCKER_REGISTRY)/$(IMAGE_NAME)
+            tags: |
+              latest
+              $(IMAGE_TAG)
