@@ -1,14 +1,28 @@
+# Trigger pipeline on main branch
 trigger:
-- main
+  - main
 
+# Use latest Ubuntu agent
 pool:
   vmImage: 'ubuntu-latest'
 
+# Global variables
 variables:
   MAVEN_OPTS: "-Xmx1024m"
+  BUILD_NUMBER: $(Build.BuildNumber)
+  GIT_COMMIT: $(Build.SourceVersion)
 
 steps:
-# 1️⃣ Verify Java & Maven versions (already installed on Ubuntu agents)
+
+# 1️⃣ Cache Maven dependencies to speed up builds
+- task: Cache@2
+  inputs:
+    key: 'maven | "$(Agent.OS)" | pom.xml'
+    path: ~/.m2/repository
+    restoreKeys: |
+      maven | "$(Agent.OS)"
+
+# 2️⃣ Verify Java & Maven versions
 - script: |
     echo "Java Version:"
     java -version
@@ -16,11 +30,14 @@ steps:
     mvn -version
   displayName: 'Verify Java & Maven'
 
-# 2️⃣ Run Maven tests
-- script: mvn clean test
-  displayName: 'Run Maven Tests'
+# 3️⃣ Run Maven tests with TestNG XML and parallel execution
+- script: |
+    mvn clean test -DsuiteXmlFile=testng.xml -T 2C -B -e \
+      -DbuildNumber=$(BUILD_NUMBER) \
+      -DgitCommit=$(GIT_COMMIT)
+  displayName: 'Run Maven Tests with TestNG XML & Parallel Execution'
 
-# 3️⃣ Publish TestNG XML results to Azure DevOps
+# 4️⃣ Publish TestNG XML results
 - task: PublishTestResults@2
   inputs:
     testResultsFiles: '**/surefire-reports/*.xml'
@@ -28,9 +45,23 @@ steps:
     mergeTestResults: true
     failTaskOnFailedTests: true
 
-# 4️⃣ Publish ExtentReports HTML as a pipeline artifact
+# 5️⃣ Publish ExtentReports as pipeline artifact
 - task: PublishPipelineArtifact@1
   inputs:
     targetPath: 'target/extent-reports'
     artifact: 'ExtentReports'
     publishLocation: 'pipeline'
+
+# 6️⃣ Publish Surefire Reports as pipeline artifact
+- task: PublishPipelineArtifact@1
+  inputs:
+    targetPath: 'target/surefire-reports'
+    artifact: 'SurefireReports'
+    publishLocation: 'pipeline'
+
+# 7️⃣ Optional: Environment info log
+- script: |
+    echo "Build Number: $(BUILD_NUMBER)"
+    echo "Git Commit: $(GIT_COMMIT)"
+    echo "Branch: $(Build.SourceBranch)"
+  displayName: 'Log Build & Environment Info'
