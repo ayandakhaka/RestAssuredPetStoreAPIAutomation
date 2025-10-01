@@ -61,6 +61,12 @@ steps:
     targetPath: 'target/surefire-reports'
     artifact: 'SurefireReports'
     publishLocation: 'pipeline'
+	
+# 7 Optional: Flaky test summary (grep for retry logs in Surfire reports)
+script: |
+	echo "Flaky Test Summary:"
+	prep -i "retry" target/surfire-report/*.xml || echo "No flaky tests detected"
+	displayName: 'Flaky Test Summary'
 
 # 7️⃣ Optional: Environment info log
 - script: |

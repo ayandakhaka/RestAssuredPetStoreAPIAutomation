@@ -16,53 +16,60 @@ import com.aventstack.extentreports.markuputils.MarkupHelper;
 
 public class ListenerClass extends ExtentManager implements ITestListener, IAnnotationTransformer {
 
-    @Override
-    public void transform(ITestAnnotation annotation, Class testClass, Constructor testConstructor, Method testMethod) {
-        // 🔑 This attaches RetryAnalyzer to every @Test
-        annotation.setRetryAnalyzer(RetryAnalyzer.class);
-    }
+	@Override
+	public void transform(ITestAnnotation annotation, Class testClass, Constructor testConstructor, Method testMethod) {
+		// 🔑 This attaches RetryAnalyzer to every @Test
+		annotation.setRetryAnalyzer(RetryAnalyzer.class);
+	}
 
-    @Override
-    public void onStart(ITestContext context) {
-        try {
-            setExtent();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        System.out.println("Test Suite started: " + context.getName());
-    }
+	@Override
+	public void onStart(ITestContext context) {
+		try {
+			setExtent();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		System.out.println("Test Suite started: " + context.getName());
+	}
 
-    @Override
-    public void onFinish(ITestContext context) {
-        endReport();
-        System.out.println("Test Suite finished: " + context.getName());
-    }
+	@Override
+	public void onFinish(ITestContext context) {
+		endReport();
+		System.out.println("Test Suite finished: " + context.getName());
+	}
 
-    @Override
-    public void onTestStart(ITestResult result) {
-        test = extent.createTest(result.getMethod().getMethodName())
-                .assignCategory(result.getMethod().getGroups());
-        test.log(Status.INFO, "Test Started: " + result.getMethod().getMethodName());
-    }
+	@Override
+	public void onTestStart(ITestResult result) {
+		test = extent.createTest(result.getMethod().getMethodName())
+				.assignCategory(result.getMethod().getGroups());
+		test.log(Status.INFO, "Test Started: " + result.getMethod().getMethodName());
+	}
 
-    @Override
-    public void onTestSuccess(ITestResult result) {
-        test.log(Status.PASS, MarkupHelper.createLabel("Test Passed: " + result.getMethod().getMethodName(), ExtentColor.GREEN));
-    }
+	@Override
+	public void onTestSuccess(ITestResult result) {
 
-    @Override
-    public void onTestFailure(ITestResult result) {
-        test.log(Status.FAIL, MarkupHelper.createLabel("Test Failed: " + result.getMethod().getMethodName(), ExtentColor.RED));
-        test.log(Status.FAIL, result.getThrowable());
-    }
+		Object isFlakyObj = result.getAttribute("isFlaky");
+		if(isFlakyObj != null && (boolean) isFlakyObj) {
+			test.log(Status.PASS, "Test passed after retry - Marked as FLAKY");
+		} else {
 
-    @Override
-    public void onTestSkipped(ITestResult result) {
-        test.log(Status.SKIP, MarkupHelper.createLabel("Test Skipped: " + result.getMethod().getMethodName(), ExtentColor.ORANGE));
-    }
+			test.log(Status.PASS, MarkupHelper.createLabel("Test Passed: " + result.getMethod().getMethodName(), ExtentColor.GREEN));
+		}
+	}
 
-    @Override
-    public void onTestFailedButWithinSuccessPercentage(ITestResult result) {
-        test.log(Status.WARNING, "Test partially failed: " + result.getMethod().getMethodName());
-    }
+	@Override
+	public void onTestFailure(ITestResult result) {
+		test.log(Status.FAIL, MarkupHelper.createLabel("Test Failed: " + result.getMethod().getMethodName(), ExtentColor.RED));
+		test.log(Status.FAIL, result.getThrowable());
+	}
+
+	@Override
+	public void onTestSkipped(ITestResult result) {
+		test.log(Status.SKIP, MarkupHelper.createLabel("Test Skipped: " + result.getMethod().getMethodName(), ExtentColor.ORANGE));
+	}
+
+	@Override
+	public void onTestFailedButWithinSuccessPercentage(ITestResult result) {
+		test.log(Status.WARNING, "Test partially failed: " + result.getMethod().getMethodName());
+	}
 }

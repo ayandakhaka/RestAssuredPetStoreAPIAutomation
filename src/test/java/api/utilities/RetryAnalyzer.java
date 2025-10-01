@@ -12,6 +12,12 @@ public class RetryAnalyzer implements IRetryAnalyzer {
         if (retryCount < maxRetryCount) {
             retryCount++;
             System.out.println("Retrying test " + result.getName() + " again, attempt " + (retryCount+1));
+            
+            // Mark test as flaky if retry occurs
+            result.setAttribute("isFlaky", true);
+            result.setAttribute("retryCount", retryCount);
+            
+            
             return true;
         }
         return false;
