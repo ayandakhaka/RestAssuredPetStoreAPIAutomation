@@ -7,7 +7,6 @@
         <methods>
           <include name="testDeletePetById"/>
           <include name="setupPet"/>
-          <include name="testListPetById"/>
           <include name="testUpdatePetWithFormData"/>
         </methods>
       </class> <!-- api.test.PetTest -->

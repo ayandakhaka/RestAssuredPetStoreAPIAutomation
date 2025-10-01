@@ -17,7 +17,7 @@ public class ExtentManager {
     public static ExtentTest test;
 
     public static void setExtent() throws IOException {
-        sparkReporter = new ExtentSparkReporter(System.getProperty("user.dir") + "/test-output/ExtentReport/MyReport.html");
+        sparkReporter = new ExtentSparkReporter(System.getProperty("user.dir") + "/target/extent-reports/MyReport.html");
         
         // load config if needed
         sparkReporter.loadXMLConfig(System.getProperty("user.dir") + "/extent-config.xml");
