@@ -35,8 +35,16 @@ steps:
     tags: |
       latest
 
-# 4️⃣ Run Tests inside Docker container
+# 4️⃣ Run Tests inside Docker container and copy results out
 - script: |
     echo "Running Rest Assured API Tests..."
-    docker run --rm $(dockerHubRepo):latest
+    mkdir -p $(Build.SourcesDirectory)/test-results
+    docker run --rm -v $(Build.SourcesDirectory)/test-results:/app/target/surefire-reports $(dockerHubRepo):latest
   displayName: 'Run Rest Assured Tests'
+
+# 5️⃣ Publish Test Results to Azure DevOps UI
+- task: PublishTestResults@2
+  displayName: 'Publish Test Results'
+  inputs:
+    testResultsFiles: '$(Build.SourcesDirectory)/test-results/*.xml'
+    testRunTitle: 'Rest Assured API Tests'
