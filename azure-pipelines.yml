@@ -6,7 +6,7 @@ pool:
 
 variables:
   imageName: 'restassured-tests'
-  dockerHubRepo: 'restassured-tests'
+  dockerHubRepo: 'ayandakhaka1/restassured-tests'
 
 steps:
 # 1️⃣ Log in to Docker Hub
