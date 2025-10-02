@@ -11,6 +11,7 @@ import api.payload.model.Category;
 import api.payload.model.Pet;
 import api.payload.model.Tag;
 import api.pet.builder.PetBuilder;
+import api.utilities.RetryAnalyzer;
 import io.restassured.response.Response;
 
 public class PetTest {
@@ -111,7 +112,8 @@ public class PetTest {
         Assert.assertEquals(response.getStatusCode(), 200);
     }
     
-    @Test(priority = 10, groups = "DeletPetById")
+    
+    @Test(priority = 10, groups = "DeletPetById", retryAnalyzer = RetryAnalyzer.class)
     public void testDeletePetById() throws InterruptedException {
     	
     	Pet tempPet = new PetBuilder()

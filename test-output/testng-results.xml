@@ -1,111 +1,67 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results ignored="0" total="8" passed="7" failed="1" skipped="0">
+<testng-results ignored="0" total="8" passed="8" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2025-10-01T12:29:18 SAST" name="Default suite" finished-at="2025-10-01T12:30:03 SAST" duration-ms="45297">
+  <suite started-at="2025-10-02T12:55:48 SAST" name="Default suite" finished-at="2025-10-02T12:56:11 SAST" duration-ms="22175">
     <groups>
       <group name="BatchUsers">
-        <method signature="UserTest.testCreateUsersWithList()[pri:5, instance:api.test.UserTest@77f1baf5]" name="testCreateUsersWithList" class="api.test.UserTest"/>
-        <method signature="UserTest.testCreateUsersWithArray()[pri:6, instance:api.test.UserTest@77f1baf5]" name="testCreateUsersWithArray" class="api.test.UserTest"/>
+        <method signature="UserTest.testCreateUsersWithList()[pri:5, instance:api.test.UserTest@41a2befb]" name="testCreateUsersWithList" class="api.test.UserTest"/>
+        <method signature="UserTest.testCreateUsersWithArray()[pri:6, instance:api.test.UserTest@41a2befb]" name="testCreateUsersWithArray" class="api.test.UserTest"/>
       </group> <!-- BatchUsers -->
       <group name="Auth">
-        <method signature="UserTest.testUserLogin()[pri:7, instance:api.test.UserTest@77f1baf5]" name="testUserLogin" class="api.test.UserTest"/>
-        <method signature="UserTest.testUserLogout()[pri:8, instance:api.test.UserTest@77f1baf5]" name="testUserLogout" class="api.test.UserTest"/>
+        <method signature="UserTest.testUserLogin()[pri:7, instance:api.test.UserTest@41a2befb]" name="testUserLogin" class="api.test.UserTest"/>
+        <method signature="UserTest.testUserLogout()[pri:8, instance:api.test.UserTest@41a2befb]" name="testUserLogout" class="api.test.UserTest"/>
       </group> <!-- Auth -->
       <group name="HappyPath">
-        <method signature="UserTest.testCreateNewUser()[pri:1, instance:api.test.UserTest@77f1baf5]" name="testCreateNewUser" class="api.test.UserTest"/>
-        <method signature="UserTest.testGetExistingUser()[pri:2, instance:api.test.UserTest@77f1baf5]" name="testGetExistingUser" class="api.test.UserTest"/>
-        <method signature="UserTest.testUpdateExistingUser()[pri:3, instance:api.test.UserTest@77f1baf5]" name="testUpdateExistingUser" class="api.test.UserTest"/>
-        <method signature="UserTest.testDeleteExistingUser()[pri:4, instance:api.test.UserTest@77f1baf5]" name="testDeleteExistingUser" class="api.test.UserTest"/>
+        <method signature="UserTest.testCreateNewUser()[pri:1, instance:api.test.UserTest@41a2befb]" name="testCreateNewUser" class="api.test.UserTest"/>
+        <method signature="UserTest.testGetExistingUser()[pri:2, instance:api.test.UserTest@41a2befb]" name="testGetExistingUser" class="api.test.UserTest"/>
+        <method signature="UserTest.testUpdateExistingUser()[pri:3, instance:api.test.UserTest@41a2befb]" name="testUpdateExistingUser" class="api.test.UserTest"/>
+        <method signature="UserTest.testDeleteExistingUser()[pri:4, instance:api.test.UserTest@41a2befb]" name="testDeleteExistingUser" class="api.test.UserTest"/>
       </group> <!-- HappyPath -->
     </groups>
-    <test started-at="2025-10-01T12:29:18 SAST" name="Default test" finished-at="2025-10-01T12:30:03 SAST" duration-ms="45297">
+    <test started-at="2025-10-02T12:55:48 SAST" name="Default test" finished-at="2025-10-02T12:56:11 SAST" duration-ms="22175">
       <class name="api.test.UserTest">
-        <test-method is-config="true" signature="setupSingleUserData()[pri:0, instance:api.test.UserTest@77f1baf5]" started-at="2025-10-01T12:29:19 SAST" name="setupSingleUserData" finished-at="2025-10-01T12:29:21 SAST" duration-ms="2525" status="PASS">
+        <test-method is-config="true" signature="setupSingleUserData()[pri:0, instance:api.test.UserTest@41a2befb]" started-at="2025-10-02T12:55:49 SAST" name="setupSingleUserData" finished-at="2025-10-02T12:55:50 SAST" duration-ms="906" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setupSingleUserData -->
-        <test-method signature="testCreateNewUser()[pri:1, instance:api.test.UserTest@77f1baf5]" started-at="2025-10-01T12:29:21 SAST" name="testCreateNewUser" finished-at="2025-10-01T12:29:49 SAST" duration-ms="28246" status="PASS">
+        <test-method signature="testCreateNewUser()[pri:1, instance:api.test.UserTest@41a2befb]" started-at="2025-10-02T12:55:50 SAST" name="testCreateNewUser" finished-at="2025-10-02T12:56:00 SAST" duration-ms="10862" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testCreateNewUser -->
-        <test-method signature="testGetExistingUser()[pri:2, instance:api.test.UserTest@77f1baf5]" started-at="2025-10-01T12:29:50 SAST" name="testGetExistingUser" finished-at="2025-10-01T12:29:52 SAST" duration-ms="1901" status="FAIL">
-          <exception class="java.lang.AssertionError">
-            <message>
-              <![CDATA[Failed to fetch existing user! expected [200] but found [404]]]>
-            </message>
-            <full-stacktrace>
-              <![CDATA[java.lang.AssertionError: Failed to fetch existing user! expected [200] but found [404]
-at org.testng.Assert.fail(Assert.java:111)
-at org.testng.Assert.failNotEquals(Assert.java:1578)
-at org.testng.Assert.assertEqualsImpl(Assert.java:150)
-at org.testng.Assert.assertEquals(Assert.java:132)
-at org.testng.Assert.assertEquals(Assert.java:1419)
-at org.testng.Assert.assertEquals(Assert.java:1383)
-at api.test.UserTest.testGetExistingUser(UserTest.java:59)
-at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
-at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-at java.base/java.lang.reflect.Method.invoke(Method.java:568)
-at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:139)
-at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:664)
-at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:228)
-at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:63)
-at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:961)
-at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:201)
-at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:148)
-at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:128)
-at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
-at org.testng.TestRunner.privateRun(TestRunner.java:819)
-at org.testng.TestRunner.run(TestRunner.java:619)
-at org.testng.SuiteRunner.runTest(SuiteRunner.java:443)
-at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:437)
-at org.testng.SuiteRunner.privateRun(SuiteRunner.java:397)
-at org.testng.SuiteRunner.run(SuiteRunner.java:336)
-at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
-at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)
-at org.testng.TestNG.runSuitesSequentially(TestNG.java:1301)
-at org.testng.TestNG.runSuitesLocally(TestNG.java:1228)
-at org.testng.TestNG.runSuites(TestNG.java:1134)
-at org.testng.TestNG.run(TestNG.java:1101)
-at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
-at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:293)
-at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:91)
-]]>
-            </full-stacktrace>
-          </exception> <!-- java.lang.AssertionError -->
+        <test-method signature="testGetExistingUser()[pri:2, instance:api.test.UserTest@41a2befb]" started-at="2025-10-02T12:56:00 SAST" name="testGetExistingUser" finished-at="2025-10-02T12:56:02 SAST" duration-ms="1312" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testGetExistingUser -->
-        <test-method signature="testUpdateExistingUser()[pri:3, instance:api.test.UserTest@77f1baf5]" started-at="2025-10-01T12:29:52 SAST" name="testUpdateExistingUser" finished-at="2025-10-01T12:29:54 SAST" duration-ms="2756" status="PASS">
+        <test-method signature="testUpdateExistingUser()[pri:3, instance:api.test.UserTest@41a2befb]" started-at="2025-10-02T12:56:02 SAST" name="testUpdateExistingUser" finished-at="2025-10-02T12:56:04 SAST" duration-ms="2427" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testUpdateExistingUser -->
-        <test-method signature="testDeleteExistingUser()[pri:4, instance:api.test.UserTest@77f1baf5]" started-at="2025-10-01T12:29:54 SAST" name="testDeleteExistingUser" finished-at="2025-10-01T12:29:57 SAST" duration-ms="2189" status="PASS">
+        <test-method signature="testDeleteExistingUser()[pri:4, instance:api.test.UserTest@41a2befb]" started-at="2025-10-02T12:56:04 SAST" name="testDeleteExistingUser" finished-at="2025-10-02T12:56:06 SAST" duration-ms="1635" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testDeleteExistingUser -->
-        <test-method is-config="true" signature="setupBatchUsers()[pri:0, instance:api.test.UserTest@77f1baf5]" started-at="2025-10-01T12:29:57 SAST" name="setupBatchUsers" finished-at="2025-10-01T12:29:57 SAST" duration-ms="3" status="PASS">
+        <test-method is-config="true" signature="setupBatchUsers()[pri:0, instance:api.test.UserTest@41a2befb]" started-at="2025-10-02T12:56:06 SAST" name="setupBatchUsers" finished-at="2025-10-02T12:56:06 SAST" duration-ms="8" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setupBatchUsers -->
-        <test-method signature="testCreateUsersWithList()[pri:5, instance:api.test.UserTest@77f1baf5]" started-at="2025-10-01T12:29:57 SAST" name="testCreateUsersWithList" finished-at="2025-10-01T12:29:59 SAST" duration-ms="2311" status="PASS">
+        <test-method signature="testCreateUsersWithList()[pri:5, instance:api.test.UserTest@41a2befb]" started-at="2025-10-02T12:56:06 SAST" name="testCreateUsersWithList" finished-at="2025-10-02T12:56:07 SAST" duration-ms="1143" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testCreateUsersWithList -->
-        <test-method signature="testCreateUsersWithArray()[pri:6, instance:api.test.UserTest@77f1baf5]" started-at="2025-10-01T12:29:59 SAST" name="testCreateUsersWithArray" finished-at="2025-10-01T12:30:00 SAST" duration-ms="1597" status="PASS">
+        <test-method signature="testCreateUsersWithArray()[pri:6, instance:api.test.UserTest@41a2befb]" started-at="2025-10-02T12:56:07 SAST" name="testCreateUsersWithArray" finished-at="2025-10-02T12:56:08 SAST" duration-ms="1336" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testCreateUsersWithArray -->
-        <test-method is-config="true" signature="setupLoginUser()[pri:0, instance:api.test.UserTest@77f1baf5]" started-at="2025-10-01T12:30:00 SAST" name="setupLoginUser" finished-at="2025-10-01T12:30:00 SAST" duration-ms="1" status="PASS">
+        <test-method is-config="true" signature="setupLoginUser()[pri:0, instance:api.test.UserTest@41a2befb]" started-at="2025-10-02T12:56:08 SAST" name="setupLoginUser" finished-at="2025-10-02T12:56:08 SAST" duration-ms="4" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setupLoginUser -->
-        <test-method signature="testUserLogin()[pri:7, instance:api.test.UserTest@77f1baf5]" started-at="2025-10-01T12:30:00 SAST" name="testUserLogin" finished-at="2025-10-01T12:30:02 SAST" duration-ms="1267" status="PASS">
+        <test-method signature="testUserLogin()[pri:7, instance:api.test.UserTest@41a2befb]" started-at="2025-10-02T12:56:08 SAST" name="testUserLogin" finished-at="2025-10-02T12:56:09 SAST" duration-ms="1142" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testUserLogin -->
-        <test-method signature="testUserLogout()[pri:8, instance:api.test.UserTest@77f1baf5]" started-at="2025-10-01T12:30:02 SAST" name="testUserLogout" finished-at="2025-10-01T12:30:03 SAST" duration-ms="1244" status="PASS">
+        <test-method signature="testUserLogout()[pri:8, instance:api.test.UserTest@41a2befb]" started-at="2025-10-02T12:56:10 SAST" name="testUserLogout" finished-at="2025-10-02T12:56:11 SAST" duration-ms="1113" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testUserLogout -->

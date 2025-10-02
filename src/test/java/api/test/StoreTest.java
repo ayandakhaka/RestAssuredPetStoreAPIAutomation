@@ -71,6 +71,8 @@ public class StoreTest {
 	@Test(groups = "DeleteByOrderId", priority = 4)
 	public void testDeleteByOrderId() {
 		Log.info("**************************** Testing Delete Orders by Id**********************************");
+		
+		System.out.println("OrderId = " + orderId);
 		response = StoreEndpoints.deleteOrderById(orderId);
 		response.then().log().all();
 		Assert.assertEquals(response.getStatusCode(), 200);

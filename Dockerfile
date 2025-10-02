@@ -1,14 +1,23 @@
-# ✅ Base image: Maven + JDK 17
+# Base image: Maven + JDK 17
 FROM maven:3.9.4-eclipse-temurin-17
 
-# ✅ Set working directory inside container
+# Working directory inside container
 WORKDIR /app
 
-# ✅ Copy your project into container
-COPY . .
+# Copy pom.xml and download dependencies (cached for speed)
+COPY pom.xml .
+RUN mvn dependency:go-offline -B
 
-# ✅ Pre-download all Maven dependencies for faster builds
-RUN mvn dependency:go-offline
+COPY testng.xml ./
 
-# ✅ Default command when container runs
-CMD ["mvn", "clean", "test", "-DsuiteXmlFile=testng.xml"]
+# copy extent report
+COPY extent-config.xml ./
+
+# Copy project source
+COPY src ./src
+
+# Create directory for test reports
+RUN mkdir -p /app/test-reports
+
+# Run tests and save reports to /app/test-reports
+CMD ["mvn", "test", "-Dsurefire.reportFormat=xml", "-Dsurefire.useFile=true", "-Dsurefire.reportDirectory=/app/test-reports"]

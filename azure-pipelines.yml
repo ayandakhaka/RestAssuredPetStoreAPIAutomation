@@ -1,79 +1,54 @@
-# Trigger on main branch
 trigger:
-  - main
+- main
 
 pool:
   vmImage: 'ubuntu-latest'
 
 variables:
+  DOCKER_HUB_USERNAME: 'ayandakhaka1'
   IMAGE_NAME: 'restassured-tests'
-  IMAGE_TAG: '$(Build.BuildId)'
-  DOCKER_REGISTRY: 'myregistry.azurecr.io'   # Change to your ACR or DockerHub registry
+  IMAGE_TAG: 'latest'
+  TEST_REPORT_DIR: '$(Build.ArtifactStagingDirectory)/test-reports'
 
-stages:
-# 1️⃣ Build Stage
-- stage: Build
-  displayName: 'Build Docker Image'
-  jobs:
-    - job: Build
-      steps:
-        - checkout: self
+steps:
 
-        - task: Docker@2
-          displayName: 'Build Docker Image'
-          inputs:
-            command: build
-            repository: $(DOCKER_REGISTRY)/$(IMAGE_NAME)
-            tags: |
-              $(IMAGE_TAG)
-            Dockerfile: '**/Dockerfile'
+# 1️⃣ Checkout code
+- task: Checkout@1
 
-# 2️⃣ Test Stage
-- stage: Test
-  displayName: 'Run Tests inside Docker'
-  dependsOn: Build
-  jobs:
-    - job: Test
-      steps:
-        - script: |
-            echo "Running tests inside Docker..."
-            docker run --rm $(DOCKER_REGISTRY)/$(IMAGE_NAME):$(IMAGE_TAG) \
-              mvn clean test -DsuiteXmlFile=testng.xml
-          displayName: 'Execute TestNG Tests'
+# 2️⃣ Login to Docker Hub
+- task: Docker@2
+  displayName: 'Login to Docker Hub'
+  inputs:
+    command: login
+    containerRegistry: 'DockerHubConnection'
 
-        - task: PublishTestResults@2
-          inputs:
-            testResultsFiles: '**/target/surefire-reports/*.xml'
-            testRunTitle: 'TestNG Results in Docker'
-            mergeTestResults: true
-            failTaskOnFailedTests: true
+# 3️⃣ Build Docker image
+- task: Docker@2
+  displayName: 'Build Docker image'
+  inputs:
+    repository: '$(DOCKER_HUB_USERNAME)/$(IMAGE_NAME)'
+    command: build
+    Dockerfile: '**/Dockerfile'
+    tags: '$(IMAGE_TAG)'
 
-        - task: PublishPipelineArtifact@1
-          inputs:
-            targetPath: 'target/extent-reports'
-            artifact: 'ExtentReports'
-            publishLocation: 'pipeline'
+# 4️⃣ Push Docker image
+- task: Docker@2
+  displayName: 'Push Docker image'
+  inputs:
+    repository: '$(DOCKER_HUB_USERNAME)/$(IMAGE_NAME)'
+    command: push
+    tags: '$(IMAGE_TAG)'
 
-# 3️⃣ Push Stage
-- stage: Push
-  displayName: 'Push Docker Image'
-  dependsOn: Test
-  condition: succeeded()
-  jobs:
-    - job: Push
-      steps:
-        # Log in to Azure Container Registry
-        - task: Docker@2
-          displayName: 'Login to ACR'
-          inputs:
-            command: login
-            containerRegistry: 'MyACRServiceConnection' # Service connection in Azure DevOps
+# 5️⃣ Run container and save test reports to mounted volume
+- script: |
+    mkdir -p $(TEST_REPORT_DIR)
+    docker run --rm -v $(TEST_REPORT_DIR):/app/test-reports $(DOCKER_HUB_USERNAME)/$(IMAGE_NAME):$(IMAGE_TAG)
+  displayName: 'Run Rest Assured tests'
 
-        - task: Docker@2
-          displayName: 'Push Docker Image'
-          inputs:
-            command: push
-            repository: $(DOCKER_REGISTRY)/$(IMAGE_NAME)
-            tags: |
-              latest
-              $(IMAGE_TAG)
+# 6️⃣ Publish JUnit/Surefire test results
+- task: PublishTestResults@2
+  inputs:
+    testResultsFiles: '$(TEST_REPORT_DIR)/*.xml'
+    testRunTitle: 'Rest Assured API Tests'
+    mergeTestResults: true
+    failTaskOnFailedTests: true

@@ -1,5 +1,7 @@
 package api.endpoints;
 
+import io.restassured.config.HttpClientConfig;
+import io.restassured.config.RestAssuredConfig;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 
@@ -66,9 +68,14 @@ public class UserEndPoints {
      * Delete a user by username.
      * @param userName Username of the user to delete.
      * @return Response after deletion request.
+     * @throws InterruptedException 
      */
-    public static Response deleteUser(String userName) {
+    public static Response deleteUser(String userName) throws InterruptedException {
         Response response = given()
+        		.config(RestAssuredConfig.config()
+        				.httpClient(HttpClientConfig.httpClientConfig()
+        						.setParam("http.connection.timeout", 5000)
+        						.setParam("http.socket.timeout", 5000)))
                 .pathParam("username", userName)
                 .when()
                 .delete(Routes.delete_url);

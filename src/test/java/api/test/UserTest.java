@@ -11,6 +11,7 @@ import com.github.javafaker.Faker;
 
 import api.endpoints.UserEndPoints;
 import api.payload.model.User;
+import api.utilities.RetryAnalyzer;
 import io.restassured.response.Response;
 
 /**
@@ -75,7 +76,7 @@ public class UserTest {
     }
 
     @Test(priority = 4, groups = "HappyPath")
-    public void testDeleteExistingUser() {
+    public void testDeleteExistingUser() throws InterruptedException {
         Response response = UserEndPoints.deleteUser(userPayload.getUsername());
         response.then().log().all();
         Assert.assertEquals(response.getStatusCode(), 200, "User deletion failed!");

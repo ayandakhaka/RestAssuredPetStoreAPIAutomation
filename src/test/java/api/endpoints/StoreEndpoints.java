@@ -2,6 +2,10 @@ package api.endpoints;
 
 import api.payload.model.Store;
 import static io.restassured.RestAssured.*;
+
+import io.restassured.RestAssured;
+import io.restassured.config.HttpClientConfig;
+import io.restassured.config.RestAssuredConfig;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 
@@ -37,7 +41,16 @@ public class StoreEndpoints {
 	
 	public static Response deleteOrderById(long orderId) {
 		
-		Response response = given()
+//		Response response = given()
+//				.pathParam("orderId", orderId)
+//				.when()
+//				.delete(Routes.delete_orderById_url);
+//		return response;
+		Response response = RestAssured.given()
+				.config(RestAssuredConfig.config()
+						.httpClient(HttpClientConfig.httpClientConfig()
+								.setParam("http.connection.timeout", 5000)
+								.setParam("http.socket.timeout", 5000)))
 				.pathParam("orderId", orderId)
 				.when()
 				.delete(Routes.delete_orderById_url);

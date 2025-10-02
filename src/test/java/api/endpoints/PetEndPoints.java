@@ -2,7 +2,9 @@ package api.endpoints;
 
 import api.payload.model.Pet;
 import io.restassured.response.Response;
-
+import io.restassured.RestAssured;
+import io.restassured.config.HttpClientConfig;
+import io.restassured.config.RestAssuredConfig;
 import io.restassured.http.ContentType;
 
 import static io.restassured.RestAssured.*;
@@ -96,11 +98,17 @@ public class PetEndPoints {
      * @return Response from the server
      */
     public static Response deletePetWithPetId(long petId) {
-        Response response = given()
+    	Response response = RestAssured.given()
+                .config(RestAssuredConfig.config()
+                        .httpClient(HttpClientConfig.httpClientConfig()
+                                .setParam("http.connection.timeout", 5000)
+                                .setParam("http.socket.timeout", 5000)))
                 .pathParam("petId", petId)
                 .when()
                 .delete(Routes.delete_pet_by_id);
+
         return response;
+
     }
 
     /**
