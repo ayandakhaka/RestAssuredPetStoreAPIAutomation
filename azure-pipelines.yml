@@ -1,55 +1,42 @@
 trigger:
-  branches:
-    include:
-      - main
+- main   # or your branch name
 
 pool:
   vmImage: 'ubuntu-latest'
 
 variables:
-  IMAGE_NAME: 'ayandakhaka1/restassured-tests'
-  IMAGE_TAG: 'latest'
+  imageName: 'restassured-tests'
+  dockerHubRepo: 'ayandakhaka1/restassured-tests'
 
 steps:
-
-# 1️⃣ Checkout repo
-- task: Checkout@1
-
-# 2️⃣ Login to Docker Hub
+# 1️⃣ Log in to Docker Hub
 - task: Docker@2
-  displayName: 'Docker Login'
+  displayName: 'Login to Docker Hub'
   inputs:
     command: login
     containerRegistry: 'DockerHubServiceConnection'
 
-# 3️⃣ Build Docker image
+# 2️⃣ Build Docker image
 - task: Docker@2
   displayName: 'Build Docker Image'
   inputs:
     command: build
+    repository: '$(dockerHubRepo)'
     Dockerfile: '**/Dockerfile'
-    buildContext: '.'
     tags: |
-      $(IMAGE_NAME):$(IMAGE_TAG)
+      latest
 
-# 4️⃣ Push Docker image to Docker Hub
+# 3️⃣ Push to Docker Hub
 - task: Docker@2
-  displayName: 'Push Docker Image'
+  displayName: 'Push Docker Image to Docker Hub'
   inputs:
     command: push
-    repository: $(IMAGE_NAME)
+    repository: '$(dockerHubRepo)'
     tags: |
-      $(IMAGE_TAG)
-    containerRegistry: 'DockerHubServiceConnection'
+      latest
 
-# 5️⃣ Run Docker container and execute tests
+# 4️⃣ Run Tests inside Docker container
 - script: |
-    docker run --rm $(IMAGE_NAME):$(IMAGE_TAG)
-  displayName: 'Run Tests in Docker'
-
-# 6️⃣ Optional: Publish Surefire test results
-- task: PublishTestResults@2
-  inputs:
-    testResultsFormat: 'JUnit'
-    testResultsFiles: '**/target/surefire-reports/*.xml'
-    failTaskOnFailedTests: true
+    echo "Running Rest Assured API Tests..."
+    docker run --rm $(dockerHubRepo):latest
+  displayName: 'Run Rest Assured Tests'
